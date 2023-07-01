@@ -22,7 +22,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
-import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -88,26 +87,26 @@ fun onBoardingScreen(navController: NavController) {
             count = count,
             currentPage = pagerState.currentPage,
             onArrowBackWardClick = {
-                if (pagerState.currentPage > 0) {
-                    coroutineScope.launch {
-                        val nextPageIndex = pagerState.currentPage + 1
-                        pagerState.animateScrollToPage(nextPageIndex)
-                    }
+
+                if (pagerState.currentPage >= 0) coroutineScope.launch {
+                    val prevPageIndex = pagerState.currentPage - 1
+                    pagerState.animateScrollToPage(prevPageIndex)
+
+
                 }
 
             }) {
-            if (pagerState.currentPage < count-1) coroutineScope.launch {
-                val prevPageIndex = pagerState.currentPage - 1
-                pagerState.animateScrollToPage(prevPageIndex)
+            if (pagerState.currentPage < count - 1) coroutineScope.launch {
+                val nextPageIndex = pagerState.currentPage + 1
+                pagerState.animateScrollToPage(nextPageIndex)
             } else {
                 navController.navigate(Screen.Home.route)
             }
         }
+
+
     }
-
-
 }
-
 
 @Composable
 fun TaskScreen(
@@ -208,8 +207,6 @@ fun PagerIndicator(
 @Composable
 fun ArrowIcon(
     isGoNext: Boolean,
-    onArrowForWardClick: () -> Unit = {},
-    onArrowBackWardClick: () -> Unit = {},
     modifier: Modifier
 
 ) {
@@ -220,10 +217,7 @@ fun ArrowIcon(
             .size(40.dp)
             .background(
                 if (!isGoNext) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.onPrimaryContainer
-            )
-            .selectable(true) {
-                if (isGoNext) onArrowForWardClick() else onArrowBackWardClick()
-            }, contentAlignment = Alignment.Center
+            ), contentAlignment = Alignment.Center
 
     ) {
         Icon(
@@ -249,8 +243,9 @@ fun CustomLayout(
         if (currentPage != 0)
             ArrowIcon(
                 isGoNext = false,
-                onArrowForWardClick = { onArrowForWardClick.invoke() },
-                modifier = Modifier
+                modifier = Modifier.clickable {
+                    onArrowBackWardClick.invoke()
+                }
 
             )
         else Spacer(modifier)
@@ -268,8 +263,7 @@ fun CustomLayout(
         if (currentPage < count - 1)
             ArrowIcon(
                 isGoNext = true,
-                onArrowBackWardClick = { onArrowBackWardClick.invoke() },
-                modifier = Modifier
+                modifier = Modifier.clickable { onArrowForWardClick.invoke() }
 
             )
         else Spacer(modifier)
