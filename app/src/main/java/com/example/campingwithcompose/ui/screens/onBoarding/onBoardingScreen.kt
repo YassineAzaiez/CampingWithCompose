@@ -1,5 +1,8 @@
 package com.example.campingwithcompose.ui.screens.onBoarding
 
+import androidx.compose.animation.core.EaseInOut
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
@@ -11,6 +14,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -21,6 +25,7 @@ import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -100,7 +105,13 @@ fun onBoardingScreen(navController: NavController) {
                 val nextPageIndex = pagerState.currentPage + 1
                 pagerState.animateScrollToPage(nextPageIndex)
             } else {
-                navController.navigate(Screen.Home.route)
+                navController.navigate(Screen.Home.route) {
+                    popUpTo(Screen.OnBoarding.route) { inclusive = true }
+
+                    launchSingleTop = true
+                    restoreState = true
+                }
+
             }
         }
 
@@ -126,7 +137,10 @@ fun TaskScreen(
 
             ) {
                 Image(
-                    modifier = Modifier.padding(start = 47.dp, end = 47.dp, top = 80.dp),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .fillMaxHeight(0.15F)
+                        .padding(start = 47.dp, end = 47.dp, top = 80.dp),
                     painter = painterResource(id = screen.image), contentDescription = screen.title
                 )
                 Text(
@@ -146,7 +160,7 @@ fun TaskScreen(
                     count = count,
                     currentPage = currentPage,
                     onArrowForWardClick = onArrowForWardClick,
-                    onArrowBackWardClick = onArrowBackWardClick
+                    onArrowBackWardClick = onArrowBackWardClick,
                 )
                 LoginButton(
                     modifier = Modifier
@@ -169,36 +183,55 @@ fun TaskScreen(
 fun PagerIndicator(
     modifier: Modifier,
     count: Int,
+    selectedPage: Int,
 ) {
     Row(
         modifier.height(50.dp),
         horizontalArrangement = Arrangement.SpaceEvenly,
         verticalAlignment = Alignment.CenterVertically
     ) {
+
         repeat(count) {
-            //   val color = if (pagerState.currentPage == iteration) Color.DarkGray else Color.LightGray
-            Box(
-                modifier = Modifier
-                    .background(MaterialTheme.colorScheme.background)
-                    .size(15.dp)
-                    .border(
-                        BorderStroke(1.dp, MaterialTheme.colorScheme.secondary), shape = CircleShape
-                    ),
+            val boxSize by animateDpAsState(
+                targetValue = if (selectedPage == it) 15.dp else 0.dp,
+                animationSpec = tween(500, easing = EaseInOut)
+            )
 
-                contentAlignment = Alignment.Center
-
-            ) {
-
+            if (selectedPage == it)
                 Box(
                     modifier = Modifier
+                        .background(MaterialTheme.colorScheme.background)
+                        .size(boxSize)
+                        .border(
+                            BorderStroke(
+                                1.dp,
+                                MaterialTheme.colorScheme.secondary
+                            ), shape = CircleShape
+                        ),
 
-                        .clip(CircleShape)
-                        .background(MaterialTheme.colorScheme.secondary)
-                        .size(7.5.dp)
+                    contentAlignment = Alignment.Center
+
+                ) {
+
+                    Box(
+                        modifier = Modifier
+
+                            .clip(CircleShape)
+                            .background(MaterialTheme.colorScheme.secondary)
+                            .size(7.5.dp)
 
 
-                )
-            }
+                    )
+                }
+            else Box(
+                modifier = Modifier
+
+                    .clip(CircleShape)
+                    .background(MaterialTheme.colorScheme.secondary)
+                    .size(7.5.dp)
+
+
+            )
         }
     }
 }
@@ -257,20 +290,21 @@ fun CustomLayout(
             modifier = Modifier
                 .padding(start = 42.dp, end = 42.dp)
                 .requiredWidth(150.dp),
-            count = count
+            count = count,
+            selectedPage = currentPage,
         )
 
-        if (currentPage < count - 1)
-            ArrowIcon(
-                isGoNext = true,
-                modifier = Modifier.clickable { onArrowForWardClick.invoke() }
 
-            )
-        else Spacer(modifier)
+        ArrowIcon(
+            isGoNext = true,
+            modifier = Modifier.clickable { onArrowForWardClick.invoke() }
+
+        )
 
 
     }
 }
+
 
 
 @Composable

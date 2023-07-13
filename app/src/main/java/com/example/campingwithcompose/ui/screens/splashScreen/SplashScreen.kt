@@ -45,7 +45,7 @@ fun SplashScreen(navController: NavController) {
         )
         delay(3000)
         navController.navigate(Screen.OnBoarding.route) {
-            popUpTo(Screen.OnBoarding.route) { inclusive = true }
+            popUpTo(Screen.Splash.route) { inclusive = true }
         }
     }
 
