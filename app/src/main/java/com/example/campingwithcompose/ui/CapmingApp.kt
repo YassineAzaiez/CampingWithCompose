@@ -32,38 +32,39 @@ fun CampingApp() {
 //        ) {
 //
 //        }
+    val menuItems = listOf(
+        NavigationItem(
+            itemName = "Activities",
+            itemIcon = ImageVector.vectorResource(id = R.drawable.ic_actitivites),
+            itemRoute = Screen.Home.route
+        ),
+        NavigationItem(
+            itemName = "Fitness",
+            itemIcon = Icons.Default.ArrowBack,
+            itemRoute = Screen.Fitness.route
+        ),
+        NavigationItem(
+            itemName = "BackPack",
+            itemIcon = ImageVector.vectorResource(id = R.drawable.ic_backpack),
+            itemRoute = Screen.BackPack.route
+        ),
+        NavigationItem(
+            itemName = "TeamMates",
+            itemIcon = ImageVector.vectorResource(id = R.drawable.ic_teamates),
+            itemRoute = Screen.TeamMates.route
+        )
+    )
 
     val navController = rememberAnimatedNavController()
 //    val backStackEntry = navController.currentBackStackEntryAsState()
     Scaffold(bottomBar = {
         val backStackEntry = navController.currentBackStackEntryAsState()
         val hideBottomNavigation =
-            (backStackEntry.value?.destination?.route == Screen.Splash.route) || (backStackEntry.value?.destination?.route == Screen.OnBoarding.route)
+            (backStackEntry.value?.destination?.route in menuItems.map { it.itemRoute })
         showBars(flag = true)
-        if (!hideBottomNavigation)
+        if (hideBottomNavigation)
             BottomNavigationBar(
-                MenuItems = listOf(
-                    NavigationItem(
-                        itemName = "Activities",
-                        itemIcon = ImageVector.vectorResource(id = R.drawable.ic_actitivites),
-                        itemRoute = Screen.Home.route
-                    ),
-                    NavigationItem(
-                        itemName = "Fitness",
-                        itemIcon = Icons.Default.ArrowBack,
-                        itemRoute = Screen.Fitness.route
-                    ),
-                    NavigationItem(
-                        itemName = "BackPack",
-                        itemIcon = ImageVector.vectorResource(id = R.drawable.ic_backpack),
-                        itemRoute = Screen.BackPack.route
-                    ),
-                    NavigationItem(
-                        itemName = "TeamMates",
-                        itemIcon = ImageVector.vectorResource(id = R.drawable.ic_teamates),
-                        itemRoute = Screen.TeamMates.route
-                    )
-                ), navController = navController,
+                MenuItems = menuItems, navController = navController,
                 modifier = Modifier.height(Dimensions.BottomBar.BottomNavHeight)
             ) { route ->
                 navController.navigate(route)

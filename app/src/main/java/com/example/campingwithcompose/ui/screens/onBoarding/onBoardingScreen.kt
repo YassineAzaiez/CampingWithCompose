@@ -50,6 +50,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.campingwithcompose.R
 import com.example.campingwithcompose.ui.navigation.screenDestination.Screen
+import com.example.campingwithcompose.utils.noRippleClickable
 import kotlinx.coroutines.launch
 
 
@@ -105,7 +106,7 @@ fun onBoardingScreen(navController: NavController) {
                 val nextPageIndex = pagerState.currentPage + 1
                 pagerState.animateScrollToPage(nextPageIndex)
             } else {
-                navController.navigate(Screen.Home.route) {
+                navController.navigate(Screen.Login.route) {
                     popUpTo(Screen.OnBoarding.route) { inclusive = true }
 
                     launchSingleTop = true
@@ -276,7 +277,7 @@ fun CustomLayout(
         if (currentPage != 0)
             ArrowIcon(
                 isGoNext = false,
-                modifier = Modifier.clickable {
+                modifier = Modifier.noRippleClickable {
                     onArrowBackWardClick.invoke()
                 }
 
@@ -297,7 +298,9 @@ fun CustomLayout(
 
         ArrowIcon(
             isGoNext = true,
-            modifier = Modifier.clickable { onArrowForWardClick.invoke() }
+            modifier = Modifier.noRippleClickable {
+                onArrowForWardClick.invoke()
+            }
 
         )
 
@@ -309,7 +312,7 @@ fun CustomLayout(
 
 @Composable
 fun LoginButton(
-    modifier: Modifier
+    modifier: Modifier,
 ) {
     Button(
         modifier = modifier,
