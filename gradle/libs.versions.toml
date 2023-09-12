@@ -1,0 +1,57 @@
+[versions]
+core-ktx = "1.12.0"
+lifecycle = "2.6.1"
+lifecycle-runtime-ktx = "2.6.0-rc01"
+activity-compose = "1.7.2"
+jUnit = "4.13.2"
+espresso = "3.5.1"
+androidx-core = "1.9.0"
+jUnitInst = "1.1.5"
+coroutines = "1.7.1"
+hilt = "2.44"
+hilt-navigation = "1.0.0-alpha03"
+retrofit = "2.9.0"
+logging-interceptor = "4.10.0"
+truth = "1.1.3"
+mock-server = "4.10.0"
+mockk = "1.13.2"
+navigation = "2.7.2"
+navigation-annimation = "0.33.1-alpha"
+compose-bom = "2023.09.00"
+agp = "8.1.0"
+org-jetbrains-kotlin-android = "1.8.10"
+kotlin = "1.8.22"
+
+
+[libraries]
+core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
+lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle-runtime-ktx" }
+activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity-compose" }
+compose-ui = { group = "androidx.compose.ui", name = "ui" }
+compose-foundation = { group = "androidx.compose.foundation", name = "foundation" }
+compose-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "compose-bom" }
+material3 = { group = "androidx.compose.material3", name = "material3" }
+junit = { group = "junit", name = "junit", version.ref = "jUnit" }
+ui-test-junit = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso" }
+coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
+coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutines" }
+navigation = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigation" }
+navigation-annimation = { group = "com.google.accompanist", name = "accompanist-navigation-animation", version.ref = "navigation-annimation" }
+hilt = {  group = "com.google.dagger", name = "hilt-android",version.ref ="hilt"}
+hilt-navigation = {  group = "androidx.hilt", name = "hilt-navigation-compose",version.ref ="hilt-navigation"}
+hilt-compiler = { group = "com.google.dagger",name="hilt-android-compiler",version.ref="hilt"}
+
+
+[plugins]
+com-android-application = { id = "com.android.application", version.ref = "agp" }
+org-jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "org-jetbrains-kotlin-android" }
+android-library = { id = "com.android.library", version.ref = "agp" }
+hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+[bundles]
+
