@@ -1,4 +1,4 @@
-package com.example.campingwithcompose.ui.screens.BackPackScreen
+package com.example.campingwithcompose.ui.screens.backPackScreen
 
 import androidx.compose.animation.*
 import androidx.compose.animation.core.FastOutSlowInEasing
@@ -7,11 +7,11 @@ import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import com.example.campingwithcompose.ui.navigation.screenDestination.Screen
 import com.example.campingwithcompose.ui.screens.homeScreen.HomeScreen
-import com.google.accompanist.navigation.animation.composable
+import androidx.navigation.compose.composable
 
 
 
-@OptIn(ExperimentalAnimationApi::class)
+
 fun NavGraphBuilder.backPackScreenRoute(navController: NavController) {
     composable(
         Screen.BackPack.route,

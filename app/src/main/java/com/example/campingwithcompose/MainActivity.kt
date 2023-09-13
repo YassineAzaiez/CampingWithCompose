@@ -10,7 +10,6 @@ import com.example.campingwithcompose.ui.CampingApp
 import com.example.campingwithcompose.ui.navigation.CampingAppNavGraph
 import com.example.campingwithcompose.ui.screens.homeScreen.Greeting
 import com.example.campingwithcompose.ui.theme.CampingWithComposeTheme
-import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 
 
 class MainActivity : ComponentActivity() {
@@ -25,13 +24,6 @@ class MainActivity : ComponentActivity() {
 }
 
 
-@OptIn(ExperimentalAnimationApi::class)
-@Composable
-fun Navigation() {
-    val navController = rememberAnimatedNavController()
-
-    CampingAppNavGraph(navController)
-}
 
 
 @Preview(showBackground = true)

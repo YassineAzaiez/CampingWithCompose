@@ -22,13 +22,16 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
 import com.example.campingwithcompose.R
 import com.example.campingwithcompose.ui.screens.onBoarding.LoginButton
 import com.example.campingwithcompose.utils.comospables.TextFiledComposable
 
 @Composable
-fun LoginScreen(navController: NavController) {
+fun LoginScreen(
+    onUserLogin: () -> Unit,
+    onRegisterBtnClick: () -> Unit,
+    onForgetPassword: () -> Unit
+) {
     Column(modifier = Modifier.padding(top = 100.dp, start = 40.dp, end = 40.dp)) {
         Image(
             painter = painterResource(id = R.drawable.ic_login),
@@ -72,7 +75,7 @@ fun LoginScreen(navController: NavController) {
                 .background(
                     shape = RoundedCornerShape(8.dp),
                     color = MaterialTheme.colorScheme.primary
-                )
+                ), onUserLogin
         )
 
         RegisterButton(

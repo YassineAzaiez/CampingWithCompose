@@ -3,15 +3,12 @@ package com.example.campingwithcompose.ui.screens.splashScreen
 import androidx.compose.animation.*
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.tween
-import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
+import androidx.navigation.compose.composable
 import com.example.campingwithcompose.ui.navigation.screenDestination.Screen
-import com.google.accompanist.navigation.animation.composable
 
 
-
-@OptIn(ExperimentalAnimationApi::class)
-fun NavGraphBuilder.splashScreenRoute(navController: NavController) {
+fun NavGraphBuilder.splashScreenRoute(navigateToNExtScreen : ()->Unit) {
     composable(
         Screen.Splash.route,
         exitTransition = {
@@ -32,5 +29,5 @@ fun NavGraphBuilder.splashScreenRoute(navController: NavController) {
                 )
             ) + fadeIn(animationSpec = tween(200))
         }
-    ) { SplashScreen(navController) }
+    ) { SplashScreen(navigateToNextScreen =navigateToNExtScreen) }
 }

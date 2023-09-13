@@ -6,12 +6,12 @@ import androidx.compose.animation.core.tween
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import com.example.campingwithcompose.ui.navigation.screenDestination.Screen
-import com.google.accompanist.navigation.animation.composable
+import androidx.navigation.compose.composable
 
 
 
-@OptIn(ExperimentalAnimationApi::class)
-fun NavGraphBuilder.onBoardingScreenRoute(navController: NavController) {
+
+fun NavGraphBuilder.onBoardingScreenRoute(onLoginClick : ()->Unit , onRegisterClick : ()->Unit) {
     composable(
         Screen.OnBoarding.route,
         exitTransition = {
@@ -32,5 +32,5 @@ fun NavGraphBuilder.onBoardingScreenRoute(navController: NavController) {
                 )
             ) + fadeIn(animationSpec = tween(200))
         }
-    ) { onBoardingScreen(navController) }
+    ) { OnBoardingScreen(onLoginClick,onRegisterClick) }
 }

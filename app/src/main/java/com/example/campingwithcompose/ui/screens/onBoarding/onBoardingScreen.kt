@@ -24,14 +24,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
-import com.example.campingwithcompose.ui.navigation.screenDestination.Screen
 import kotlinx.coroutines.launch
 
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun onBoardingScreen(navController: NavController) {
+fun OnBoardingScreen(onLoginClick: () -> Unit, onRegisterClick: () -> Unit) {
     val pagerState = rememberPagerState(initialPage = 0) {
         onBoardingPages.size
     }
@@ -57,20 +55,17 @@ fun onBoardingScreen(navController: NavController) {
 
                 }
 
-            }) {
-            if (pagerState.currentPage < count - 1) coroutineScope.launch {
-                val nextPageIndex = pagerState.currentPage + 1
-                pagerState.animateScrollToPage(nextPageIndex)
-            } else {
-                navController.navigate(Screen.Login.route) {
-                    popUpTo(Screen.OnBoarding.route) { inclusive = true }
+            }, {
+                if (pagerState.currentPage < count - 1) coroutineScope.launch {
+                    val nextPageIndex = pagerState.currentPage + 1
+                    pagerState.animateScrollToPage(nextPageIndex)
+                } else {
+                    onLoginClick()
 
-                    launchSingleTop = true
-                    restoreState = true
+
                 }
-
-            }
-        }
+            }, onLoginClick
+        )
 
 
     }
@@ -82,7 +77,8 @@ fun TaskScreen(
     count: Int,
     currentPage: Int,
     onArrowBackWardClick: () -> Unit,
-    onArrowForWardClick: () -> Unit
+    onArrowForWardClick: () -> Unit,
+    action: () -> Unit
 ) {
     val scrollState = rememberLazyListState()
     LazyColumn(modifier = Modifier.fillMaxSize(), state = scrollState) {
@@ -122,7 +118,8 @@ fun TaskScreen(
                 LoginButton(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(top = 25.dp)
+                        .padding(top = 25.dp),
+                    action
                 )
 
                 Text(
@@ -145,10 +142,12 @@ fun TaskScreen(
 @Composable
 fun LoginButton(
     modifier: Modifier,
+    action: () -> Unit
 ) {
     Button(
         modifier = modifier,
-        onClick = { /*TODO*/ }) {
+        onClick = action
+    ) {
         Text("Log in")
     }
 }

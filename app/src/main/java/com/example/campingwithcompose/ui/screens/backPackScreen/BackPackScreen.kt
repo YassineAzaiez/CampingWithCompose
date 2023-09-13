@@ -1,4 +1,4 @@
-package com.example.campingwithcompose.ui.screens.BackPackScreen
+package com.example.campingwithcompose.ui.screens.backPackScreen
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavController

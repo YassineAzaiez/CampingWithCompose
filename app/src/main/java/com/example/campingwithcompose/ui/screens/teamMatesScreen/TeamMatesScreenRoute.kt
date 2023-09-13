@@ -7,7 +7,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import com.example.campingwithcompose.ui.navigation.screenDestination.Screen
 import com.example.campingwithcompose.ui.screens.homeScreen.HomeScreen
-import com.google.accompanist.navigation.animation.composable
+import androidx.navigation.compose.composable
 
 
 

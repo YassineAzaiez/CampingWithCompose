@@ -1,16 +1,22 @@
 package com.example.campingwithcompose.ui.screens.loginScreen
 
-import androidx.compose.animation.*
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
+import androidx.navigation.compose.composable
 import com.example.campingwithcompose.ui.navigation.screenDestination.Screen
-import com.google.accompanist.navigation.animation.composable
 
 
-@OptIn(ExperimentalAnimationApi::class)
-fun NavGraphBuilder.loginScreenRoute(navController: NavController) {
+fun NavGraphBuilder.loginScreenRoute(
+    onUserLogin: () -> Unit,
+    onRegisterBtnClick : ( ) -> Unit,
+    onForgetPassword : ()->Unit
+) {
     composable(
         Screen.Login.route,
         exitTransition = {
@@ -31,5 +37,10 @@ fun NavGraphBuilder.loginScreenRoute(navController: NavController) {
                 )
             ) + fadeIn(animationSpec = tween(200))
         }
-    ) { LoginScreen(navController) }
+    ) { LoginScreen(
+        onUserLogin,
+        onRegisterBtnClick,
+        onForgetPassword
+
+    ) }
 }

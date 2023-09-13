@@ -1,6 +1,6 @@
 package com.example.campingwithcompose.utils.comospables
 
-import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -26,14 +27,16 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.campingwithcompose.ui.theme.Grey100
+import com.example.campingwithcompose.ui.theme.Grey400
 
+
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TextFiledComposable(
     modifier: Modifier = Modifier,
     label: String = "",
     maxLines: Int = 1,
-    inputType : KeyboardOptions = KeyboardOptions.Default
+    inputType: KeyboardOptions = KeyboardOptions.Default
 
 ) {
     Column(modifier = modifier, Arrangement.Center) {
@@ -46,19 +49,22 @@ fun TextFiledComposable(
                 .fillMaxWidth()
                 .height(64.dp)
                 .padding(top = 11.dp)
-                .background(color = Grey100, shape = RoundedCornerShape(8.dp)),
+                .border(width = 1.dp, color = Grey400, shape = RoundedCornerShape(12.dp)),
             contentAlignment = Alignment.CenterStart
         ) {
             BasicTextField(
-                modifier = Modifier.fillMaxWidth().padding(horizontal = 10.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 10.dp),
                 value = inputText,
                 maxLines = maxLines,
                 keyboardOptions = inputType,
-                visualTransformation = if(inputType.keyboardType == KeyboardType.Password) PasswordVisualTransformation() else VisualTransformation.None,
+                visualTransformation = if (inputType.keyboardType == KeyboardType.Password) PasswordVisualTransformation() else VisualTransformation.None,
                 textStyle = MaterialTheme.typography.labelMedium,
                 onValueChange = {
                     inputText = it
-                })
+                }
+            )
             { innerTextField ->
                 innerTextField()
             }
