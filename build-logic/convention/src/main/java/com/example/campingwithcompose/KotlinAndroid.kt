@@ -14,7 +14,7 @@ internal fun Project.configureKotlinAndroid(
     compileSdk = 33
 
     defaultConfig {
-        compileSdkPreview = "UpsideDownCake"
+
         minSdk = 26
 
         vectorDrawables {

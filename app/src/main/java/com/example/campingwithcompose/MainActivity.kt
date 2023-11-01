@@ -3,13 +3,11 @@ package com.example.campingwithcompose
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.campingwithcompose.ui.CampingApp
-import com.example.campingwithcompose.ui.navigation.CampingAppNavGraph
 import com.example.campingwithcompose.ui.screens.homeScreen.Greeting
-import com.example.campingwithcompose.ui.theme.CampingWithComposeTheme
+import com.example.campingwithcompose.core.ui.navigation.theme.CampingWithComposeTheme
 
 
 class MainActivity : ComponentActivity() {

@@ -18,25 +18,8 @@ class AndroidApplicationComposeConventionPlugin : Plugin<Project> {
 
         extensions.configure<ApplicationExtension> {
             configureAndroidCompose(this)
+
         }
 
-        dependencies {
-            with(getLibs()) {
-                implementation(platform(getLib("compose.bom")))
-                implementation(getLib("activity.compose"))
-                implementation(getLib("compose.ui"))
-                implementation(getLib("compose.foundation"))
-                implementation(getLib("compose.graphics"))
-                implementation(getLib("material3"))
-
-                implementation(getLib("navigation"))
-                implementation(getLib("navigation.annimation"))
-
-                implementation(getLib("androidx.lifecycle.viewModel.ktx"))
-                implementation(getLib("androidx.lifecycle.viewModel.compose"))
-                implementation(getLib("androidx.lifecycle.runtime.compose"))
-                implementation(getLib("ui.tooling.preview"))
-            }
-        }
     }
 }

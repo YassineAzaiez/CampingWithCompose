@@ -25,6 +25,7 @@ kotlin = "1.8.22"
 junit = "1.1.5"
 appcompat = "1.6.1"
 material = "1.10.0"
+androidx-core-core-ktx = "1.9.0"
 
 
 [libraries]
@@ -58,6 +59,7 @@ material = { group = "com.google.android.material", name = "material", version.r
 # Dependencies of the included build-logic
 android-gradle-plugin = { group = "com.android.tools.build", name = "gradle", version.ref = "agp" }
 kotlin-gradle-plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
+core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidx-core-core-ktx" }
 
 
 [plugins]

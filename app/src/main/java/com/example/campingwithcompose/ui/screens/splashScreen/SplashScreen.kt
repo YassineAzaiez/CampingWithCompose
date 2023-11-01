@@ -23,8 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.campingwithcompose.R
-import com.example.campingwithcompose.ui.navigation.screenDestination.Screen
-import com.example.campingwithcompose.ui.theme.Green500
+import com.example.campingwithcompose.core.ui.navigation.theme.Green500
 import kotlinx.coroutines.delay
 
 @Composable

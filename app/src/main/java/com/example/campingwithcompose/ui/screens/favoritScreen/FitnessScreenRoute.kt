@@ -5,11 +5,9 @@ import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.tween
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
-import com.example.campingwithcompose.ui.navigation.screenDestination.Screen
 import com.example.campingwithcompose.ui.screens.homeScreen.HomeScreen
 import androidx.navigation.compose.composable
-
-
+import com.example.campingwithcompose.core.ui.navigation.Screen
 
 
 fun NavGraphBuilder.fitnessScreenRoute(navController: NavController) {

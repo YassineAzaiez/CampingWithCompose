@@ -9,6 +9,8 @@ class KotlinHiltConventionPlugin : Plugin<Project> {
 
     override fun apply(target: Project) = with(target) {
         with(pluginManager) {
+            apply("java-library")
+            apply("org.jetbrains.kotlin.jvm")
             apply("org.jetbrains.kotlin.kapt")
         }
 

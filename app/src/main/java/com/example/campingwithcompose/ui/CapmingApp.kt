@@ -12,11 +12,8 @@ import androidx.compose.ui.res.vectorResource
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.campingwithcompose.R
-import com.example.campingwithcompose.ui.navigation.BottomNavigationBar
-import com.example.campingwithcompose.ui.navigation.CampingAppNavGraph
-import com.example.campingwithcompose.ui.navigation.NavigationItem
-import com.example.campingwithcompose.ui.navigation.screenDestination.Screen
-import com.example.campingwithcompose.ui.theme.Dimensions
+import com.example.campingwithcompose.core.ui.navigation.Screen
+import com.example.campingwithcompose.core.ui.navigation.theme.Dimensions
 
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -25,22 +22,19 @@ fun CampingApp() {
 
 
     val menuItems = listOf(
-        NavigationItem(
+        com.example.campingwithcompose.core.ui.navigation.NavigationItem(
             itemName = "Activities",
             itemIcon = ImageVector.vectorResource(id = R.drawable.ic_actitivites),
             itemRoute = Screen.Home.route
-        ),
-        NavigationItem(
+        ), com.example.campingwithcompose.core.ui.navigation.NavigationItem(
             itemName = "Fitness",
             itemIcon = Icons.Default.ArrowBack,
             itemRoute = Screen.Fitness.route
-        ),
-        NavigationItem(
+        ), com.example.campingwithcompose.core.ui.navigation.NavigationItem(
             itemName = "BackPack",
             itemIcon = ImageVector.vectorResource(id = R.drawable.ic_backpack),
             itemRoute = Screen.BackPack.route
-        ),
-        NavigationItem(
+        ), com.example.campingwithcompose.core.ui.navigation.NavigationItem(
             itemName = "TeamMates",
             itemIcon = ImageVector.vectorResource(id = R.drawable.ic_teamates),
             itemRoute = Screen.TeamMates.route
@@ -53,13 +47,13 @@ fun CampingApp() {
         val backStackEntry = navController.currentBackStackEntryAsState()
         val hideBottomNavigation =
             (backStackEntry.value?.destination?.route in menuItems.map { it.itemRoute })
-        if (hideBottomNavigation)
-            BottomNavigationBar(
-                MenuItems = menuItems, navController = navController,
-                modifier = Modifier.height(Dimensions.BottomBar.BottomNavHeight)
-            ) { route ->
-                navController.navigate(route)
-            }
+        if (hideBottomNavigation) BottomNavigationBar(
+            MenuItems = menuItems,
+            navController = navController,
+            modifier = Modifier.height(Dimensions.BottomBar.BottomNavHeight)
+        ) { route ->
+            navController.navigate(route)
+        }
 
     }) {
         CampingAppNavGraph(navController = navController)

@@ -7,6 +7,10 @@ fun DependencyHandler.implementation(dependency: Any) {
     add("implementation", dependency)
 }
 
+fun DependencyHandler.api(dependency: Any) {
+    add("api", dependency)
+}
+
 fun DependencyHandler.test(dependency: String) {
     add("test", dependency)
 }

@@ -1,14 +1,15 @@
 package com.example.campingwithcompose.ui.screens.homeScreen
 
-import androidx.compose.animation.*
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
-import com.example.campingwithcompose.ui.navigation.screenDestination.Screen
 import androidx.navigation.compose.composable
-
-
+import com.example.campingwithcompose.core.ui.navigation.Screen
 
 
 fun NavGraphBuilder.homeScreenRoute(navController: NavController) {

@@ -43,8 +43,8 @@ android {
 
 dependencies {
 
-
-
+    implementation(project(":feature:authentication"))
+    implementation(project(":core:ui"))
 
 
     //coroutines
@@ -53,6 +53,7 @@ dependencies {
     //test
     implementation(libs.junit)
     implementation(libs.coroutines.test)
+
 
     //ui test
     androidTestImplementation(libs.ui.test.junit)

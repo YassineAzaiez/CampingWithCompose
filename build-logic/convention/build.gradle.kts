@@ -44,6 +44,11 @@ gradlePlugin {
             id = "campingWithCompose.kotlin.library"
             implementationClass = "KotlinLibraryConventionPlugin"
         }
+
+        register("androidLibraryFeature") {
+            id = "campingWithCompose.library.feature"
+            implementationClass = "AndroidLibraryFeatureConventionPlugin"
+        }
     }
 
 }

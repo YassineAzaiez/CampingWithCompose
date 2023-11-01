@@ -13,7 +13,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
-import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -24,6 +23,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.campingwithcompose.core.ui.navigation.comospables.LoginButton
 import kotlinx.coroutines.launch
 
 
@@ -132,26 +132,6 @@ fun TaskScreen(
         }
     }
 }
-
-
-
-
-
-
-
-@Composable
-fun LoginButton(
-    modifier: Modifier,
-    action: () -> Unit
-) {
-    Button(
-        modifier = modifier,
-        onClick = action
-    ) {
-        Text("Log in")
-    }
-}
-
 
 @Preview(showBackground = true)
 @Composable
