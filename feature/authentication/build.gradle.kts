@@ -7,10 +7,4 @@ plugins {
 
 android {
     namespace = "com.example.campingwithcompose.authentication"
-
-}
-
-dependencies {
-
-
 }
