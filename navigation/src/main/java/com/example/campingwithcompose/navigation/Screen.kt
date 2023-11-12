@@ -1,6 +1,8 @@
-package com.example.campingwithcompose.core.ui.navigation
+package com.example.campingwithcompose.navigation
 
-sealed class Screen (val route : String){
+import androidx.navigation.NamedNavArgument
+
+sealed class Screen(val route: String, val arguments: List<NamedNavArgument> = emptyList()) {
     object Splash : Screen("splashScreen")
     object OnBoarding : Screen("onBoarding")
     object Login : Screen("login")
@@ -8,4 +10,5 @@ sealed class Screen (val route : String){
     object Fitness : Screen("fitness")
     object BackPack : Screen("backPack")
     object TeamMates : Screen("teamMates")
+    object Default : Screen("")
 }

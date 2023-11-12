@@ -29,7 +29,7 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun OnBoardingScreen(onLoginClick: () -> Unit, onRegisterClick: () -> Unit) {
+fun OnBoardingScreen() {
     val pagerState = rememberPagerState(initialPage = 0) {
         onBoardingPages.size
     }
@@ -60,11 +60,11 @@ fun OnBoardingScreen(onLoginClick: () -> Unit, onRegisterClick: () -> Unit) {
                     val nextPageIndex = pagerState.currentPage + 1
                     pagerState.animateScrollToPage(nextPageIndex)
                 } else {
-                    onLoginClick()
+                    //onLoginClick()
 
 
                 }
-            }, onLoginClick
+            },{}
         )
 
 

@@ -8,12 +8,11 @@ import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
-import com.example.campingwithcompose.core.ui.navigation.Screen
 
 
 fun NavGraphBuilder.splashScreenRoute(navigateToNExtScreen : ()->Unit) {
     composable(
-        Screen.Splash.route,
+        com.example.campingwithcompose.navigation.Screen.Splash.route,
         exitTransition = {
             slideOutHorizontally(
                 targetOffsetX = { -300 },

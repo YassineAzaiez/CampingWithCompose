@@ -53,6 +53,7 @@ dependencies {
     //test
     implementation(libs.junit)
     implementation(libs.coroutines.test)
+    implementation(project(":navigation"))
 
 
     //ui test

@@ -1,16 +1,18 @@
 package com.example.campingwithcompose.ui.screens.favoritScreen
 
-import androidx.compose.animation.*
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.tween
-import androidx.navigation.NavController
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
 import androidx.navigation.NavGraphBuilder
-import com.example.campingwithcompose.ui.screens.homeScreen.HomeScreen
 import androidx.navigation.compose.composable
-import com.example.campingwithcompose.core.ui.navigation.Screen
+import com.example.campingwithcompose.navigation.Screen
+import com.example.campingwithcompose.ui.screens.homeScreen.HomeScreen
 
 
-fun NavGraphBuilder.fitnessScreenRoute(navController: NavController) {
+fun NavGraphBuilder.fitnessScreenRoute() {
     composable(
         Screen.Fitness.route,
         exitTransition = {
@@ -31,5 +33,5 @@ fun NavGraphBuilder.fitnessScreenRoute(navController: NavController) {
                 )
             ) + fadeIn(animationSpec = tween(200))
         }
-    ) { HomeScreen(navController) }
+    ) { HomeScreen() }
 }

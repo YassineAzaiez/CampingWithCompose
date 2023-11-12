@@ -4,7 +4,6 @@ package com.example.campingwithcompose.ui
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import com.example.campingwithcompose.core.ui.navigation.Screen
 import com.example.campingwithcompose.ui.screens.backPackScreen.backPackScreenRoute
 import com.example.campingwithcompose.ui.screens.favoritScreen.fitnessScreenRoute
 import com.example.campingwithcompose.ui.screens.homeScreen.homeScreenRoute
@@ -16,25 +15,32 @@ import com.example.ui.authentication.loginScreen.loginScreenRoute
 
 @Composable
 fun CampingAppNavGraph(navController: NavHostController) {
-    NavHost(navController = navController, startDestination = Screen.Splash.route) {
+    NavHost(
+        navController = navController,
+        startDestination = com.example.campingwithcompose.navigation.Screen.Splash.route
+    ) {
 
         splashScreenRoute {
-            navController.navigate(Screen.OnBoarding.route) {
-                popUpTo(Screen.Splash.route) { inclusive = true }
+            navController.navigate(com.example.campingwithcompose.navigation.Screen.OnBoarding.route) {
+                popUpTo(com.example.campingwithcompose.navigation.Screen.Splash.route) {
+                    inclusive = true
+                }
             }
         }
 
         onBoardingScreenRoute(onLoginClick = {
-            navController.navigate(Screen.Login.route) {
-                popUpTo(Screen.OnBoarding.route) { inclusive = true }
+            navController.navigate(com.example.campingwithcompose.navigation.Screen.Login.route) {
+                popUpTo(com.example.campingwithcompose.navigation.Screen.OnBoarding.route) {
+                    inclusive = true
+                }
                 launchSingleTop = true
                 restoreState = true
             }
         }) {}
         loginScreenRoute(onUserLogin = {}, onRegisterBtnClick = {}) {}
-        homeScreenRoute(navController)
-        teamMatesScreenRoute(navController)
-        fitnessScreenRoute(navController)
-        backPackScreenRoute(navController)
+        homeScreenRoute()
+        teamMatesScreenRoute()
+        fitnessScreenRoute()
+        backPackScreenRoute()
     }
 }

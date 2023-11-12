@@ -1,18 +1,20 @@
 package com.example.campingwithcompose.ui.screens.backPackScreen
 
-import androidx.compose.animation.*
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.tween
-import androidx.navigation.NavController
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
 import androidx.navigation.NavGraphBuilder
-import com.example.campingwithcompose.ui.screens.homeScreen.HomeScreen
 import androidx.navigation.compose.composable
-import com.example.campingwithcompose.core.ui.navigation.Screen
+import com.example.campingwithcompose.navigation.Screen
+import com.example.campingwithcompose.ui.screens.homeScreen.HomeScreen
 
 
-fun NavGraphBuilder.backPackScreenRoute(navController: NavController) {
+fun NavGraphBuilder.backPackScreenRoute() {
     composable(
-      Screen.BackPack.route,
+        Screen.BackPack.route,
         exitTransition = {
             slideOutHorizontally(
                 targetOffsetX = { -300 },
@@ -31,5 +33,5 @@ fun NavGraphBuilder.backPackScreenRoute(navController: NavController) {
                 )
             ) + fadeIn(animationSpec = tween(200))
         }
-    ) { HomeScreen(navController) }
+    ) { HomeScreen() }
 }

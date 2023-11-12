@@ -6,15 +6,13 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
-import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
-import com.example.campingwithcompose.core.ui.navigation.Screen
 
 
-fun NavGraphBuilder.homeScreenRoute(navController: NavController) {
+fun NavGraphBuilder.homeScreenRoute() {
     composable(
-        Screen.Home.route,
+        com.example.campingwithcompose.navigation.Screen.Home.route,
         exitTransition = {
             slideOutHorizontally(
                 targetOffsetX = { -300 },
@@ -33,5 +31,5 @@ fun NavGraphBuilder.homeScreenRoute(navController: NavController) {
                 )
             ) + fadeIn(animationSpec = tween(200))
         }
-    ) { HomeScreen(navController) }
+    ) { HomeScreen() }
 }

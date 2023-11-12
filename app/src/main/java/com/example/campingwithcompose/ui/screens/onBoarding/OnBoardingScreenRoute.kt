@@ -1,17 +1,18 @@
 package com.example.campingwithcompose.ui.screens.onBoarding
 
-import androidx.compose.animation.*
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.tween
-
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
-import com.example.campingwithcompose.core.ui.navigation.Screen
 
 
 fun NavGraphBuilder.onBoardingScreenRoute(onLoginClick : ()->Unit , onRegisterClick : ()->Unit) {
     composable(
-       Screen.OnBoarding.route,
+       com.example.campingwithcompose.navigation.Screen.OnBoarding.route,
         exitTransition = {
             slideOutHorizontally(
                 targetOffsetX = { -300 },
