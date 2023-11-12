@@ -12,6 +12,7 @@ android {
 }
 
 dependencies {
+
     with(getLibs()) {
         api(platform(getLib("compose.bom")))
         api(getLib("activity.compose"))
@@ -19,7 +20,7 @@ dependencies {
         api(getLib("compose.foundation"))
         api(getLib("compose.graphics"))
         api(getLib("material3"))
-
+        api( getLib("androidx.hilt.navigation.compose"))
         api(getLib("navigation"))
         api(getLib("navigation.annimation"))
 

@@ -12,7 +12,7 @@ import androidx.navigation.compose.composable
 
 fun NavGraphBuilder.homeScreenRoute() {
     composable(
-        com.example.campingwithcompose.navigation.Screen.Home.route,
+        com.example.campingwithcompose.navigation.Screens.Home.route,
         exitTransition = {
             slideOutHorizontally(
                 targetOffsetX = { -300 },

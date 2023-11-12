@@ -6,13 +6,14 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 
 
-fun NavGraphBuilder.onBoardingScreenRoute(onLoginClick : ()->Unit , onRegisterClick : ()->Unit) {
+fun NavGraphBuilder.onBoardingScreenRoute() {
     composable(
-       com.example.campingwithcompose.navigation.Screen.OnBoarding.route,
+        com.example.campingwithcompose.navigation.Screens.OnBoarding.route,
         exitTransition = {
             slideOutHorizontally(
                 targetOffsetX = { -300 },
@@ -31,5 +32,5 @@ fun NavGraphBuilder.onBoardingScreenRoute(onLoginClick : ()->Unit , onRegisterCl
                 )
             ) + fadeIn(animationSpec = tween(200))
         }
-    ) { OnBoardingScreen(onLoginClick,onRegisterClick) }
+    ) { OnBoardingScreen(hiltViewModel()) }
 }

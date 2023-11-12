@@ -17,26 +17,28 @@ import com.example.ui.authentication.loginScreen.loginScreenRoute
 fun CampingAppNavGraph(navController: NavHostController) {
     NavHost(
         navController = navController,
-        startDestination = com.example.campingwithcompose.navigation.Screen.Splash.route
+        startDestination = com.example.campingwithcompose.navigation.Screens.Splash.route
     ) {
 
         splashScreenRoute {
-            navController.navigate(com.example.campingwithcompose.navigation.Screen.OnBoarding.route) {
-                popUpTo(com.example.campingwithcompose.navigation.Screen.Splash.route) {
+            navController.navigate(com.example.campingwithcompose.navigation.Screens.OnBoarding.route) {
+                popUpTo(com.example.campingwithcompose.navigation.Screens.Splash.route) {
                     inclusive = true
                 }
             }
         }
 
-        onBoardingScreenRoute(onLoginClick = {
-            navController.navigate(com.example.campingwithcompose.navigation.Screen.Login.route) {
-                popUpTo(com.example.campingwithcompose.navigation.Screen.OnBoarding.route) {
-                    inclusive = true
-                }
-                launchSingleTop = true
-                restoreState = true
-            }
-        }) {}
+        onBoardingScreenRoute()
+
+//        onLoginClick = {
+//            navController.navigate(com.example.campingwithcompose.navigation.Screen.Login.route) {
+//                popUpTo(com.example.campingwithcompose.navigation.Screen.OnBoarding.route) {
+//                    inclusive = true
+//                }
+//                launchSingleTop = true
+//                restoreState = true
+//            }
+//        }
         loginScreenRoute(onUserLogin = {}, onRegisterBtnClick = {}) {}
         homeScreenRoute()
         teamMatesScreenRoute()

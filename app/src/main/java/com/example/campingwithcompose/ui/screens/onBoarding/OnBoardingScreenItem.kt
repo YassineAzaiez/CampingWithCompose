@@ -3,6 +3,7 @@ package com.example.campingwithcompose.ui.screens.onBoarding
 import androidx.annotation.DrawableRes
 import com.example.campingwithcompose.R
 
+
 data class OnBoardingScreenItem(
     @DrawableRes val image: Int,
     val title: String,

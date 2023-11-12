@@ -1,17 +1,17 @@
 package com.example.campingwithcompose.navigation
 
-import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.flow.receiveAsFlow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 
 class NavigationManager {
 
-    private val _commands = Channel<Screen>()
-    val commands get() = _commands.receiveAsFlow()
+    private val _commands = MutableStateFlow<Screens>(Screens.Default)
+    val commands get() = _commands.asStateFlow()
 
     suspend fun navigate(
-        directions: Screen
+        directions: Screens
     ) {
-        _commands.send(directions)
+        _commands.emit(directions)
     }
 
 }

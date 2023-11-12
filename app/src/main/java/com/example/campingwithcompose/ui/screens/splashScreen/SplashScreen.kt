@@ -21,7 +21,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 import com.example.campingwithcompose.R
 import com.example.campingwithcompose.core.ui.navigation.theme.Green500
 import kotlinx.coroutines.delay

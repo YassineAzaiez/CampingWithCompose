@@ -8,7 +8,6 @@ import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
-import com.example.campingwithcompose.navigation.Screen
 
 
 fun NavGraphBuilder.loginScreenRoute(
@@ -17,7 +16,7 @@ fun NavGraphBuilder.loginScreenRoute(
     onForgetPassword : ()->Unit
 ) {
     composable(
-        com.example.campingwithcompose.navigation.Screen.Login.route,
+        com.example.campingwithcompose.navigation.Screens.Login.route,
         exitTransition = {
             slideOutHorizontally(
                 targetOffsetX = { -300 },

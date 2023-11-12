@@ -2,6 +2,7 @@
 import ext.getLib
 import ext.getLibs
 import ext.implementation
+import ext.kapt
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.dependencies
@@ -16,9 +17,9 @@ class AndroidHiltConventionPlugin : Plugin<Project> {
 
         dependencies {
             with(getLibs()) {
-                implementation(  getLib("hilt"))
-                implementation(getLib("hilt.compiler"))
-                implementation(getLib("hilt.navigation"))
+                implementation(  getLib("hilt.android"))
+                kapt(getLib("hilt.android.compiler"))
+
             }
         }
     }

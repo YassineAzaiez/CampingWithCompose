@@ -11,7 +11,7 @@ import com.example.campingwithcompose.ui.screens.homeScreen.HomeScreen
 @OptIn(ExperimentalAnimationApi::class)
 fun NavGraphBuilder.teamMatesScreenRoute() {
     composable(
-        com.example.campingwithcompose.navigation.Screen.TeamMates.route,
+        com.example.campingwithcompose.navigation.Screens.TeamMates.route,
         exitTransition = {
             slideOutHorizontally(
                 targetOffsetX = { -300 },

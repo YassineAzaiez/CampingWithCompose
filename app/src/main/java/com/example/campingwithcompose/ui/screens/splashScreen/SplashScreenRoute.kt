@@ -12,7 +12,7 @@ import androidx.navigation.compose.composable
 
 fun NavGraphBuilder.splashScreenRoute(navigateToNExtScreen : ()->Unit) {
     composable(
-        com.example.campingwithcompose.navigation.Screen.Splash.route,
+        com.example.campingwithcompose.navigation.Screens.Splash.route,
         exitTransition = {
             slideOutHorizontally(
                 targetOffsetX = { -300 },
