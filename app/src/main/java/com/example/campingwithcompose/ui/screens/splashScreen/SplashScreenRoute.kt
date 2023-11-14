@@ -6,11 +6,12 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 
 
-fun NavGraphBuilder.splashScreenRoute(navigateToNExtScreen : ()->Unit) {
+fun NavGraphBuilder.splashScreenRoute() {
     composable(
         com.example.campingwithcompose.navigation.Screens.Splash.route,
         exitTransition = {
@@ -31,5 +32,5 @@ fun NavGraphBuilder.splashScreenRoute(navigateToNExtScreen : ()->Unit) {
                 )
             ) + fadeIn(animationSpec = tween(200))
         }
-    ) { SplashScreen(navigateToNextScreen =navigateToNExtScreen) }
+    ) { SplashScreen(hiltViewModel()) }
 }

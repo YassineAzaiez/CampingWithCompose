@@ -9,7 +9,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
@@ -19,7 +18,6 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.campingwithcompose.R
-
 import com.example.campingwithcompose.core.ui.navigation.theme.CampingWithComposeTheme
 import com.example.campingwithcompose.core.ui.navigation.theme.Dimensions
 import com.example.campingwithcompose.navigation.NavigationManager
@@ -41,7 +39,19 @@ class MainActivity : ComponentActivity() {
                 val navController = rememberNavController()
                 navigationManager.commands.collectAsStateWithLifecycle(Screens.Default).value.also { command ->
                     if (command.route.isNotEmpty()) {
-                        navController.navigate(command.route)
+                        navController.navigate(command.route) {
+                            if (command == Screens.Login ) {
+                                popUpTo(Screens.OnBoarding.route) {
+                                    inclusive = true
+                                }
+                                launchSingleTop = (command as Screens.Login ).launchInclusive
+                            }
+                            if(command == Screens.OnBoarding) {
+                                popUpTo(Screens.Splash.route) {
+                                    inclusive = true
+                                }
+                            }
+                        }
                     }
                 }
                 CampingApp(navController)

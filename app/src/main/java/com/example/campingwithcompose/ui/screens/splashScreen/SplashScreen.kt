@@ -26,7 +26,7 @@ import com.example.campingwithcompose.core.ui.navigation.theme.Green500
 import kotlinx.coroutines.delay
 
 @Composable
-fun SplashScreen(navigateToNextScreen : ()->Unit) {
+fun SplashScreen(viewModel: SplashScreenViewModel) {
 
     val scale = remember {
         Animatable(0f)
@@ -42,7 +42,7 @@ fun SplashScreen(navigateToNextScreen : ()->Unit) {
             )
         )
         delay(3000)
-        navigateToNextScreen()
+        viewModel.navigateToNextScreen()
     }
 
     Column(

@@ -20,25 +20,8 @@ fun CampingAppNavGraph(navController: NavHostController) {
         startDestination = com.example.campingwithcompose.navigation.Screens.Splash.route
     ) {
 
-        splashScreenRoute {
-            navController.navigate(com.example.campingwithcompose.navigation.Screens.OnBoarding.route) {
-                popUpTo(com.example.campingwithcompose.navigation.Screens.Splash.route) {
-                    inclusive = true
-                }
-            }
-        }
-
+        splashScreenRoute()
         onBoardingScreenRoute()
-
-//        onLoginClick = {
-//            navController.navigate(com.example.campingwithcompose.navigation.Screen.Login.route) {
-//                popUpTo(com.example.campingwithcompose.navigation.Screen.OnBoarding.route) {
-//                    inclusive = true
-//                }
-//                launchSingleTop = true
-//                restoreState = true
-//            }
-//        }
         loginScreenRoute(onUserLogin = {}, onRegisterBtnClick = {}) {}
         homeScreenRoute()
         teamMatesScreenRoute()
