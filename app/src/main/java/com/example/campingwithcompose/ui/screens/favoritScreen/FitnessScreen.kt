@@ -1,10 +1,10 @@
-package com.example.campingwithcompose.ui.screens.homeScreen
+package com.example.campingwithcompose.ui.screens.favoritScreen
 
 import androidx.compose.runtime.Composable
-import androidx.navigation.NavController
+import com.example.campingwithcompose.ui.screens.homeScreen.Greeting
 
 @Composable
-fun FavoriteScreen(NavHost: NavController) {
+fun FavoriteScreen() {
     Greeting()
 }
 

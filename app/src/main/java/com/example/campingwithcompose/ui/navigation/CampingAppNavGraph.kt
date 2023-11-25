@@ -1,27 +1,30 @@
 package com.example.campingwithcompose.ui.navigation
 
-import androidx.compose.animation.ExperimentalAnimationApi
+
+import Screens
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
-import com.example.campingwithcompose.ui.navigation.screenDestination.Screen
-import com.example.campingwithcompose.ui.screens.BackPackScreen.backPackScreenRoute
+import androidx.navigation.compose.NavHost
+import com.example.campingwithcompose.ui.screens.backPackScreen.backPackScreenRoute
 import com.example.campingwithcompose.ui.screens.favoritScreen.fitnessScreenRoute
 import com.example.campingwithcompose.ui.screens.homeScreen.homeScreenRoute
-import com.example.campingwithcompose.ui.screens.onBoarding.onBoardingScreenRoute
-import com.example.campingwithcompose.ui.screens.splashScreen.splashScreenRoute
+import com.example.campingwithcompose.ui.screens.onBoarding.onBoardingGraph
 import com.example.campingwithcompose.ui.screens.teamMatesScreen.teamMatesScreenRoute
-import com.example.campingwithcompose.utils.showBars
-import com.google.accompanist.navigation.animation.AnimatedNavHost
+import com.example.ui.authentication.loginScreen.loginGraph
 
-@OptIn(ExperimentalAnimationApi::class)
+
 @Composable
 fun CampingAppNavGraph(navController: NavHostController) {
-    AnimatedNavHost(navController = navController, startDestination = Screen.Splash.route) {
-        splashScreenRoute(navController)
-        onBoardingScreenRoute(navController)
-        homeScreenRoute(navController)
-        teamMatesScreenRoute(navController)
-        fitnessScreenRoute(navController)
-        backPackScreenRoute(navController)
+    NavHost(
+        navController = navController,
+        startDestination = Screens.Splash.route
+    ) {
+
+        onBoardingGraph()
+        loginGraph(onUserLogin = {}, onRegisterBtnClick = {}) {}
+        homeScreenRoute()
+        teamMatesScreenRoute()
+        fitnessScreenRoute()
+        backPackScreenRoute()
     }
 }
