@@ -1,11 +1,10 @@
-package com.example.campingwithcompose.ui.screens.splashScreen
+package com.example.campingwithcompose.ui.screens.onBoarding.splashScreen
 
+import Launch
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.campingwithcompose.navigation.NavigationManager
-import com.example.campingwithcompose.navigation.Screens
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -17,7 +16,7 @@ class SplashScreenViewModel @Inject constructor(
 
     fun navigateToNextScreen() {
         viewModelScope.launch {
-            navigationManager.navigate(Screens.OnBoarding)
+            navigationManager.navigate(Launch.OnBoarding)
         }
     }
 

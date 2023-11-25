@@ -1,4 +1,4 @@
-package com.example.campingwithcompose.core.ui.navigation
+package com.example.campingwithcompose.ui.navigation
 
 import androidx.compose.ui.graphics.vector.ImageVector
 

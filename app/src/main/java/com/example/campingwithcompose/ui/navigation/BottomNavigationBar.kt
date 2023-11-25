@@ -1,4 +1,4 @@
-package com.example.campingwithcompose.ui
+package com.example.campingwithcompose.ui.navigation
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
@@ -21,7 +21,6 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.example.campingwithcompose.core.ui.navigation.NavigationItem
 import com.example.campingwithcompose.core.ui.navigation.theme.Dimensions.BottomBar.BottomNavHeight
 import com.example.campingwithcompose.core.ui.navigation.theme.Green700
 import com.example.campingwithcompose.utils.noRippleClickable
@@ -29,7 +28,7 @@ import com.example.campingwithcompose.utils.noRippleClickable
 
 @Composable
 fun BottomNavigationBar(
-    MenuItems: List<NavigationItem>,
+    menuItems: List<NavigationItem>,
     navController: NavController,
     modifier: Modifier = Modifier,
     onMenuItemClicked: (String) -> Unit
@@ -44,8 +43,8 @@ fun BottomNavigationBar(
         verticalAlignment = Alignment.CenterVertically
     ) {
 
-        MenuItems.forEach { item ->
-            addItem(
+        menuItems.forEach { item ->
+            AddItem(
                 item, backStackEntry.value?.destination,
                 onMenuItemClicked = onMenuItemClicked
             )
@@ -57,7 +56,7 @@ fun BottomNavigationBar(
 
 
 @Composable
-fun addItem(
+fun AddItem(
     item: NavigationItem,
     currentDestination: NavDestination?,
     onMenuItemClicked: (String) -> Unit

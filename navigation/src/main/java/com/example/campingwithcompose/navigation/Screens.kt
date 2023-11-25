@@ -1,51 +1,20 @@
-package com.example.campingwithcompose.navigation
+sealed class Screens(open val route: String) {
+   object Splash : Screens("splash")
 
-sealed interface Screens {
-   val route: String
+   object Auth : Screens("authentication")
+   object Home : Screens("homeScreen")
+   object Fitness : Screens("fitness")
+   object BackPack : Screens("backPack")
+   object TeamMates : Screens("teamMates")
+   object Default : Screens("")
+}
+sealed class Launch(override val route: String): Screens(route){
+   object Splash : Launch("splashScreen")
+   object OnBoarding : Launch("onBoardingScreen")
+}
 
-   object Splash : Screens {
-      override val route: String
-         get() = "splashScreen"
-   }
+sealed class Authentication(override val route: String): Screens(route){
+   object Login : Authentication("login")
+   object ForgetPassword : Authentication("forgetPassword")
 
-   object OnBoarding : Screens {
-      override val route: String
-         get() = "onBoarding"
-
-   }
-
-   object Login : Screens {
-      var launchInclusive: Boolean = true
-      var launchSingleTop: Boolean = true
-      override val route: String
-         get() = "login"
-
-   }
-
-   object Home : Screens {
-      override val route: String
-         get() = "homeScreen"
-   }
-
-   object Fitness : Screens {
-      override val route: String
-         get() = "fitness"
-
-   }
-
-   object BackPack : Screens {
-      override val route: String
-         get() = "fitness"
-
-   }
-
-   object TeamMates : Screens {
-      override val route: String
-         get() = "teamMates"
-   }
-
-   object Default : Screens {
-      override val route: String
-         get() = ""
-   }
 }

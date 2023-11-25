@@ -1,9 +1,9 @@
 package com.example.campingwithcompose.ui.screens.onBoarding
 
+import Authentication
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.campingwithcompose.navigation.NavigationManager
-import com.example.campingwithcompose.navigation.Screens
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -16,10 +16,7 @@ class OnboardingViewModel @Inject constructor(
 
     fun navigateToLogin() {
         viewModelScope.launch {
-            navigationManager.navigate(Screens.Login.apply {
-                launchSingleTop = true
-                launchInclusive = true
-            })
+            navigationManager.navigate(Authentication.Login)
         }
     }
 

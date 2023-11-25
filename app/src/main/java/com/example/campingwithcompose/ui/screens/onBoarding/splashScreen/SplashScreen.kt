@@ -1,4 +1,4 @@
-package com.example.campingwithcompose.ui.screens.splashScreen
+package com.example.campingwithcompose.ui.screens.onBoarding.splashScreen
 
 import android.view.animation.OvershootInterpolator
 import androidx.compose.animation.core.Animatable

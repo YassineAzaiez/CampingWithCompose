@@ -1,5 +1,6 @@
 package com.example.campingwithcompose.ui.screens.backPackScreen
 
+import Screens
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
@@ -8,7 +9,6 @@ import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
-import com.example.campingwithcompose.navigation.Screens
 import com.example.campingwithcompose.ui.screens.homeScreen.HomeScreen
 
 

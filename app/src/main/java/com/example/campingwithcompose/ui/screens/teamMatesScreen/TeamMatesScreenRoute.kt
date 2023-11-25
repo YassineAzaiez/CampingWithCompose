@@ -1,5 +1,6 @@
 package com.example.campingwithcompose.ui.screens.teamMatesScreen
 
+import Screens
 import androidx.compose.animation.*
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.tween
@@ -11,7 +12,21 @@ import com.example.campingwithcompose.ui.screens.homeScreen.HomeScreen
 @OptIn(ExperimentalAnimationApi::class)
 fun NavGraphBuilder.teamMatesScreenRoute() {
     composable(
-        com.example.campingwithcompose.navigation.Screens.TeamMates.route,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        Screens.TeamMates.route,
         exitTransition = {
             slideOutHorizontally(
                 targetOffsetX = { -300 },

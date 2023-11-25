@@ -1,4 +1,4 @@
-package com.example.campingwithcompose
+package com.example.campingwithcompose.ui
 
 
 import androidx.lifecycle.ViewModel

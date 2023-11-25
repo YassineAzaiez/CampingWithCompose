@@ -1,5 +1,8 @@
 package com.example.campingwithcompose.ui
 
+import Authentication
+import Launch
+import Screens
 import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -14,6 +17,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
@@ -21,7 +25,9 @@ import com.example.campingwithcompose.R
 import com.example.campingwithcompose.core.ui.navigation.theme.CampingWithComposeTheme
 import com.example.campingwithcompose.core.ui.navigation.theme.Dimensions
 import com.example.campingwithcompose.navigation.NavigationManager
-import com.example.campingwithcompose.navigation.Screens
+import com.example.campingwithcompose.ui.navigation.BottomNavigationBar
+import com.example.campingwithcompose.ui.navigation.CampingAppNavGraph
+import com.example.campingwithcompose.ui.navigation.NavigationItem
 import com.example.campingwithcompose.ui.screens.homeScreen.Greeting
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -40,14 +46,14 @@ class MainActivity : ComponentActivity() {
                 navigationManager.commands.collectAsStateWithLifecycle(Screens.Default).value.also { command ->
                     if (command.route.isNotEmpty()) {
                         navController.navigate(command.route) {
-                            if (command == Screens.Login ) {
-                                popUpTo(Screens.OnBoarding.route) {
+                            if (command == Authentication.Login) {
+                                popUpTo(navController.graph.startDestinationRoute ?: "") {
                                     inclusive = true
                                 }
-                                launchSingleTop = (command as Screens.Login ).launchInclusive
+
                             }
-                            if(command == Screens.OnBoarding) {
-                                popUpTo(Screens.Splash.route) {
+                            if (command == Launch.OnBoarding) {
+                                popUpTo(navController.graph.findStartDestination().id) {
                                     inclusive = true
                                 }
                             }
@@ -66,19 +72,19 @@ fun CampingApp(navController: NavHostController) {
 
 
     val menuItems = listOf(
-        com.example.campingwithcompose.core.ui.navigation.NavigationItem(
+        NavigationItem(
             itemName = "Activities",
             itemIcon = ImageVector.vectorResource(id = R.drawable.ic_actitivites),
             itemRoute = Screens.Home.route
-        ), com.example.campingwithcompose.core.ui.navigation.NavigationItem(
+        ), NavigationItem(
             itemName = "Fitness",
             itemIcon = Icons.Default.ArrowBack,
             itemRoute = Screens.Fitness.route
-        ), com.example.campingwithcompose.core.ui.navigation.NavigationItem(
+        ), NavigationItem(
             itemName = "BackPack",
             itemIcon = ImageVector.vectorResource(id = R.drawable.ic_backpack),
             itemRoute = Screens.BackPack.route
-        ), com.example.campingwithcompose.core.ui.navigation.NavigationItem(
+        ), NavigationItem(
             itemName = "TeamMates",
             itemIcon = ImageVector.vectorResource(id = R.drawable.ic_teamates),
             itemRoute = Screens.TeamMates.route
@@ -92,11 +98,20 @@ fun CampingApp(navController: NavHostController) {
         val hideBottomNavigation =
             (backStackEntry.value?.destination?.route in menuItems.map { it.itemRoute })
         if (hideBottomNavigation) BottomNavigationBar(
-            MenuItems = menuItems,
+            menuItems = menuItems,
             navController = navController,
             modifier = Modifier.height(Dimensions.BottomBar.BottomNavHeight)
         ) { route ->
-            navController.navigate(route)
+            navController.navigate(route) {
+                popUpTo(navController.graph.findStartDestination().id) {
+                    saveState = true
+                }
+                // Avoid multiple copies of the same destination when
+                // reselecting the same item
+                launchSingleTop = true
+                // Restore state when reselecting a previously selected item
+                restoreState = true
+            }
         }
 
     }) {
