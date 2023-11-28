@@ -22,7 +22,6 @@ import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.campingwithcompose.core.ui.navigation.theme.Dimensions.BottomBar.BottomNavHeight
-import com.example.campingwithcompose.core.ui.navigation.theme.Green700
 import com.example.campingwithcompose.utils.noRippleClickable
 
 
@@ -63,7 +62,7 @@ fun AddItem(
 ) {
     val selected = item.itemRoute == currentDestination?.route
 
-    val color = if (selected) Green700 else Color.Transparent
+    val color = if (selected) MaterialTheme.colorScheme.background else Color.Transparent
 
 
 

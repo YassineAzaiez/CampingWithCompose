@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -22,7 +23,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.campingwithcompose.R
-import com.example.campingwithcompose.core.ui.navigation.theme.Green500
 import kotlinx.coroutines.delay
 
 @Composable
@@ -48,7 +48,7 @@ fun SplashScreen(viewModel: SplashScreenViewModel) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Green500),
+            .background(MaterialTheme.colorScheme.background),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {

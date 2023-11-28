@@ -27,7 +27,6 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.campingwithcompose.core.ui.navigation.theme.Grey400
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -49,7 +48,7 @@ fun TextFiledComposable(
                 .fillMaxWidth()
                 .height(64.dp)
                 .padding(top = 11.dp)
-                .border(width = 1.dp, color = Grey400, shape = RoundedCornerShape(12.dp)),
+                .border(width = 1.dp, color = MaterialTheme.colorScheme.outlineVariant, shape = RoundedCornerShape(12.dp)),
             contentAlignment = Alignment.CenterStart
         ) {
             BasicTextField(

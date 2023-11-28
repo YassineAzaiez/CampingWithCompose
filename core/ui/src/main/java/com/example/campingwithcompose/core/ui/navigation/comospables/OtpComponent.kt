@@ -15,8 +15,6 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.example.campingwithcompose.core.ui.navigation.theme.Grey200
-import com.example.campingwithcompose.core.ui.navigation.theme.Grey400
 
 
 @Composable
@@ -83,17 +81,17 @@ private fun CharView(
             .width(40.dp)
             .border(
                 1.dp, when {
-                    isFocused -> Grey400
-                    else -> Grey200
+                    isFocused -> MaterialTheme.colorScheme.outlineVariant
+                    else -> MaterialTheme.colorScheme.outline
                 }, RoundedCornerShape(8.dp)
             )
             .padding(2.dp),
         text = char,
         style = MaterialTheme.typography.headlineMedium,
         color = if (isFocused) {
-            Grey200
+            MaterialTheme.colorScheme.outlineVariant
         } else {
-            Grey400
+            MaterialTheme.colorScheme.outline
         },
         textAlign = TextAlign.Center
     )

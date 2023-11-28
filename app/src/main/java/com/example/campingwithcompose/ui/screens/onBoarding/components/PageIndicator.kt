@@ -48,7 +48,7 @@ fun PagerIndicator(
             if (selectedPage == it)
                 Box(
                     modifier = Modifier
-                        .background(MaterialTheme.colorScheme.background)
+
                         .size(boxSize)
                         .border(
                             BorderStroke(

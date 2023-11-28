@@ -11,24 +11,26 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.campingwithcompose.R
-import com.example.campingwithcompose.core.ui.navigation.theme.CampingWithComposeTheme
 import com.example.campingwithcompose.core.ui.navigation.theme.Dimensions
 import com.example.campingwithcompose.navigation.NavigationManager
 import com.example.campingwithcompose.ui.navigation.BottomNavigationBar
 import com.example.campingwithcompose.ui.navigation.CampingAppNavGraph
 import com.example.campingwithcompose.ui.navigation.NavigationItem
 import com.example.campingwithcompose.ui.screens.homeScreen.Greeting
+import com.example.compose.CampingWithComposeTheme
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -60,7 +62,11 @@ class MainActivity : ComponentActivity() {
                         }
                     }
                 }
-                CampingApp(navController)
+                Surface (
+                    tonalElevation = 5.dp
+                ){
+                    CampingApp(navController)
+                }
             }
         }
     }
