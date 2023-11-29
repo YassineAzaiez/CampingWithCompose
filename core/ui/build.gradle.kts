@@ -13,6 +13,8 @@ android {
 
 dependencies {
 
+    implementation(libs.androidx.junit.ktx)
+    androidTestImplementation("junit:junit:4.12")
     with(getLibs()) {
         api(platform(getLib("compose.bom")))
         api(getLib("activity.compose"))
@@ -28,6 +30,7 @@ dependencies {
         api(getLib("androidx.lifecycle.viewModel.compose"))
         api(getLib("androidx.lifecycle.runtime.compose"))
         api(getLib("ui.tooling.preview"))
+        api(getLib("ui.tooling"))
     }
 }
 

@@ -18,12 +18,14 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.campingwithcompose.core.ui.navigation.comospables.LoginButton
+import com.example.campingwithcompose.R
+import com.example.campingwithcompose.core.ui.navigation.component.CwcButton
 import kotlinx.coroutines.launch
 
 
@@ -51,7 +53,6 @@ fun OnBoardingScreen(viewModel: OnboardingViewModel) {
                 if (pagerState.currentPage >= 0) coroutineScope.launch {
                     val prevPageIndex = pagerState.currentPage - 1
                     pagerState.animateScrollToPage(prevPageIndex)
-
 
                 }
 
@@ -115,12 +116,14 @@ fun TaskScreen(
                     onArrowForWardClick = onArrowForWardClick,
                     onArrowBackWardClick = onArrowBackWardClick,
                 )
-                LoginButton(
+                CwcButton(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(top = 25.dp),
-                    action
-                )
+                    onCLick = action
+                ) {
+                    Text(text = stringResource(id = R.string.login))
+                }
 
                 Text(
                     text = "Don’t have an Account? Register", modifier = Modifier

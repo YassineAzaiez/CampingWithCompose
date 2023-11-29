@@ -1,4 +1,4 @@
-package com.example.campingwithcompose.core.ui.navigation.comospables
+package com.example.campingwithcompose.core.ui.navigation.component
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
