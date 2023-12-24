@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -19,7 +20,9 @@ import androidx.compose.ui.unit.dp
 import com.example.campingwithcompose.core.ui.R
 import com.example.campingwithcompose.core.ui.navigation.component.CwcButton
 import com.example.campingwithcompose.core.ui.navigation.component.CwcOutlinedButton
-import com.example.campingwithcompose.core.ui.navigation.component.TextFiledComposable
+import com.example.campingwithcompose.core.ui.navigation.component.CwcTextFiled
+import com.example.compose.CampingWithComposeTheme
+import com.example.compose.ThemePreviews
 
 @Composable
 fun LoginScreen(
@@ -35,7 +38,7 @@ fun LoginScreen(
                 .fillMaxWidth(),
         )
 
-        TextFiledComposable(
+        CwcTextFiled(
             label = "Email",
             modifier = Modifier.padding(top = 60.dp),
             inputType = KeyboardOptions(
@@ -43,7 +46,7 @@ fun LoginScreen(
                 keyboardType = KeyboardType.Email
             )
         )
-        TextFiledComposable(
+        CwcTextFiled(
             label = "Password",
             modifier = Modifier.padding(top = 20.dp),
             inputType = KeyboardOptions(
@@ -84,4 +87,16 @@ fun LoginScreen(
     }
 
 
+}
+@ThemePreviews
+@Composable
+fun LoginScreenPreview() {
+
+    CampingWithComposeTheme {
+        Surface(
+            tonalElevation = 5.dp
+        ) {
+            LoginScreen({}, {}) {}
+        }
+    }
 }

@@ -70,7 +70,7 @@ fun GenericPasswordScreen(
                     otpValue = value
                 })
 
-            ScreenInputType.TEXTFILED -> TextFiledComposable()
+            ScreenInputType.TEXTFILED -> CwcTextFiled()
             else -> {}
 
         }
