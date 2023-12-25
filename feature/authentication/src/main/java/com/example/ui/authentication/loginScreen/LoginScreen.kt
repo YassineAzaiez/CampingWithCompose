@@ -1,6 +1,7 @@
 package com.example.ui.authentication.loginScreen
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -21,13 +22,21 @@ import com.example.campingwithcompose.core.ui.R
 import com.example.campingwithcompose.core.ui.navigation.component.CwcButton
 import com.example.campingwithcompose.core.ui.navigation.component.CwcOutlinedButton
 import com.example.campingwithcompose.core.ui.navigation.component.CwcTextFiled
+import com.example.campingwithcompose.core.ui.navigation.utils.noRippleClickable
 import com.example.compose.CampingWithComposeTheme
 import com.example.compose.ThemePreviews
 
+
 @Composable
 fun LoginScreen(
+    loginViewModel: LoginViewModel
+) {
+    LoginScreen({}, loginViewModel::navigateForgetPassword)
+}
+
+@Composable
+private fun LoginScreen(
     onUserLogin: () -> Unit,
-    onRegisterBtnClick: () -> Unit,
     onForgetPassword: () -> Unit
 ) {
     Column(modifier = Modifier.padding(top = 100.dp, start = 40.dp, end = 40.dp)) {
@@ -58,10 +67,12 @@ fun LoginScreen(
         Box(
             modifier = Modifier
                 .fillMaxWidth()
+                .noRippleClickable {  onForgetPassword.invoke()}
                 .padding(top = 16.dp),
-            contentAlignment = Alignment.Center
-        ) {
-            Text(text = "Forgot Password?")
+            contentAlignment = Alignment.Center,
+
+            ) {
+            Text(text = "Forgot Password?",)
         }
 
         CwcButton(
@@ -96,7 +107,7 @@ fun LoginScreenPreview() {
         Surface(
             tonalElevation = 5.dp
         ) {
-            LoginScreen({}, {}) {}
+            LoginScreen({}, {})
         }
     }
 }

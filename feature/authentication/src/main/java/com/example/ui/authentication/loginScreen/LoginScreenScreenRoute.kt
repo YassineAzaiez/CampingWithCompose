@@ -8,31 +8,24 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 
 
-fun NavGraphBuilder.loginGraph(
-    onUserLogin: () -> Unit,
-    onRegisterBtnClick : ( ) -> Unit,
-    onForgetPassword: () -> Unit
-) {
+fun NavGraphBuilder.loginGraph() {
     navigation(
         route = Screens.Auth.route,
         startDestination = Authentication.Login.route
     ) {
-        addLogin(onUserLogin, onRegisterBtnClick, onForgetPassword)
+        addLogin()
     }
 
 }
 
 
-fun NavGraphBuilder.addLogin(
-    onUserLogin: () -> Unit,
-    onRegisterBtnClick: () -> Unit,
-    onForgetPassword: () -> Unit
-) {
+fun NavGraphBuilder.addLogin() {
     composable(
         Authentication.Login.route,
         exitTransition = {
@@ -54,12 +47,7 @@ fun NavGraphBuilder.addLogin(
             ) + fadeIn(animationSpec = tween(200))
         }
     ) {
-        LoginScreen(
-            onUserLogin,
-            onRegisterBtnClick,
-            onForgetPassword
-
-        )
+        LoginScreen(hiltViewModel())
     }
 
 }

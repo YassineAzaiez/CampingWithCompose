@@ -1,7 +1,4 @@
 <resources>
     <string name="app_name">CampingWithCompose</string>
     <string name="login">Login</string>
-
-    <string name="forget_password">Forget Password</string>
-    <string name="forget_password_description">To get your new password you need to put your phone number down below. and we will send you an OTP on that number for confirmation.</string>
 </resources>

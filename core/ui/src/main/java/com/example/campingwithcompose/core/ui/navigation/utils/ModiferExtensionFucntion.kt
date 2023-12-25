@@ -1,4 +1,4 @@
-package com.example.campingwithcompose.utils
+package com.example.campingwithcompose.core.ui.navigation.utils
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource

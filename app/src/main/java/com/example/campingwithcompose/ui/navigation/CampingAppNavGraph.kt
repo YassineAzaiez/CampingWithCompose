@@ -1,6 +1,5 @@
 package com.example.campingwithcompose.ui.navigation
 
-
 import Screens
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
@@ -10,6 +9,7 @@ import com.example.campingwithcompose.ui.screens.favoritScreen.fitnessScreenRout
 import com.example.campingwithcompose.ui.screens.homeScreen.homeScreenRoute
 import com.example.campingwithcompose.ui.screens.onBoarding.onBoardingGraph
 import com.example.campingwithcompose.ui.screens.teamMatesScreen.teamMatesScreenRoute
+import com.example.ui.authentication.forgetPassword.forgetPasswordRoute
 import com.example.ui.authentication.loginScreen.loginGraph
 
 
@@ -21,7 +21,8 @@ fun CampingAppNavGraph(navController: NavHostController) {
     ) {
 
         onBoardingGraph()
-        loginGraph(onUserLogin = {}, onRegisterBtnClick = {}) {}
+        loginGraph()
+        forgetPasswordRoute()
         homeScreenRoute()
         teamMatesScreenRoute()
         fitnessScreenRoute()

@@ -25,7 +25,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.unit.dp
-import com.example.campingwithcompose.utils.noRippleClickable
+import com.example.campingwithcompose.core.ui.navigation.utils.noRippleClickable
 
 @Composable
 fun PagerIndicator(

@@ -39,7 +39,7 @@ fun GenericPasswordScreen(
 ) {
     Column(
         modifier
-            .padding(horizontal = 10.dp),
+            .padding(horizontal = 10.dp, vertical = 10.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
@@ -48,7 +48,6 @@ fun GenericPasswordScreen(
         }
         Toolbar(
             modifier = Modifier
-                .padding(top = 10.dp)
                 .align(Alignment.Start),
             navigationAction = navigationAction,
             title = title
@@ -89,28 +88,7 @@ fun GenericPasswordScreen(
 }
 
 
-@Composable
-fun Toolbar(
-    modifier: Modifier,
-    navigationAction: () -> Unit,
-    title: String
-) {
-    Row(
-        modifier,
-        horizontalArrangement = Arrangement.Start,
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        IconButton(
-            onClick = navigationAction,
-        ) {
-            Icon(
-                imageVector = Icons.Default.KeyboardArrowLeft, contentDescription = "Arrow left"
-            )
-        }
 
-        Text(text = title, style = MaterialTheme.typography.titleLarge)
-    }
-}
 
 
 @Preview
