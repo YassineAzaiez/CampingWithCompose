@@ -38,6 +38,9 @@ android {
             merges.add("META-INF/gradle/incremental.annotation.processors")
         }
     }
+    kapt {
+        correctErrorTypes = true
+    }
 }
 
 

@@ -30,7 +30,11 @@ dependencies {
         api(getLib("androidx.lifecycle.viewModel.compose"))
         api(getLib("androidx.lifecycle.runtime.compose"))
         api(getLib("ui.tooling.preview"))
-        api(getLib("ui.tooling"))
+        api(libs.ui.tooling)
+        implementation("androidx.compose.material:material:1.5.4")
+        implementation(libs.phone.code.picker)
     }
+
 }
+
 

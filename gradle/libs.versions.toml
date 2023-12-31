@@ -26,6 +26,7 @@ junit = "1.1.5"
 appcompat = "1.6.1"
 material = "1.10.0"
 androidx-core-core-ktx = "1.9.0"
+phone-number-picker = "2.2.6"
 
 
 [libraries]
@@ -57,6 +58,7 @@ androidx-hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navig
 androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junit" }
 appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+phone-code-picker = { group = "com.github.jump-sdk", name = "jetpack_compose_country_code_picker_emoji", version.ref = "phone-number-picker" }
 
 
 # Dependencies of the included build-logic

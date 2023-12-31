@@ -1,5 +1,6 @@
 package com.example.campingwithcompose.core.ui.navigation.component
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -14,6 +15,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
@@ -87,15 +89,17 @@ private fun CharView(
                 1.dp, when {
                     isFocused -> MaterialTheme.colorScheme.outlineVariant
                     else -> MaterialTheme.colorScheme.outline
-                }, RoundedCornerShape(8.dp)
+                }, shape = RoundedCornerShape(8.dp)
             )
+            .clip(shape = RoundedCornerShape(8.dp))
+            .background(MaterialTheme.colorScheme.background)
             .padding(2.dp),
         text = char,
         style = MaterialTheme.typography.headlineMedium,
         color = if (isFocused) {
-            MaterialTheme.colorScheme.outlineVariant
+            MaterialTheme.colorScheme.primary
         } else {
-            MaterialTheme.colorScheme.outline
+            MaterialTheme.colorScheme.outlineVariant
         },
         textAlign = TextAlign.Center
     )

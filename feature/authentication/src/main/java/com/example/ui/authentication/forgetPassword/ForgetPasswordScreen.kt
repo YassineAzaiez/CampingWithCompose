@@ -17,6 +17,6 @@ fun ForgetPasswordScreen() {
         navigationAction = {} ,
         title = stringResource(id = R.string.forget_password),
         description = stringResource(id = R.string.forget_password_description),
-        userInputType = ScreenInputType.OTP
+        userInputType = ScreenInputType.PHONE
     ){}
 }

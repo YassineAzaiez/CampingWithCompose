@@ -13,12 +13,15 @@ import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -32,6 +35,7 @@ import com.example.campingwithcompose.ui.navigation.NavigationItem
 import com.example.campingwithcompose.ui.screens.homeScreen.Greeting
 import com.example.compose.CampingWithComposeTheme
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
@@ -45,22 +49,31 @@ class MainActivity : ComponentActivity() {
         setContent {
             CampingWithComposeTheme {
                 val navController = rememberNavController()
-                navigationManager.commands.collectAsStateWithLifecycle(Screens.Default).value.also { command ->
-                    if (command.route.isNotEmpty()) {
-                        navController.navigate(command.route) {
-                            if (command == Authentication.Login) {
-                                popUpTo(navController.graph.startDestinationRoute ?: "") {
-                                    inclusive = true
-                                }
+                LaunchedEffect(Unit) {
+                    lifecycleScope.launch {
+                        repeatOnLifecycle(Lifecycle.State.STARTED) {
+                            navigationManager.commands.collect { command ->
+                                if (command.route.isNotEmpty()) {
+                                    navController.navigate(command.route) {
+                                        if (command == Authentication.Login) {
+                                            popUpTo(
+                                                navController.graph.startDestinationRoute ?: ""
+                                            ) {
+                                                inclusive = true
+                                            }
 
-                            }
-                            if (command == Launch.OnBoarding) {
-                                popUpTo(navController.graph.findStartDestination().id) {
-                                    inclusive = true
+                                        }
+                                        if (command == Launch.OnBoarding) {
+                                            popUpTo(navController.graph.findStartDestination().id) {
+                                                inclusive = true
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
                     }
+
                 }
                 Surface (
                     tonalElevation = 5.dp
@@ -127,7 +140,7 @@ fun CampingApp(navController: NavHostController) {
 }
 
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun GreetingPreview() {
     CampingWithComposeTheme(dynamicColor = false) {

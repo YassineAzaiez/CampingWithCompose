@@ -1,23 +1,16 @@
 package com.example.campingwithcompose.core.ui.navigation.component
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.KeyboardArrowLeft
-import androidx.compose.material3.Button
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -26,7 +19,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.campingwithcompose.core.ui.R
-
+import com.togitech.ccp.component.TogiCountryCodePicker
+import com.togitech.ccp.data.CountryData
 
 @Composable
 fun GenericPasswordScreen(
@@ -34,18 +28,20 @@ fun GenericPasswordScreen(
     title: String,
     description: String,
     userInputType: ScreenInputType,
+    otpCount: Int = 5,
     navigationAction: () -> Unit,
     onSendActionSuccess: () -> Unit
 ) {
     Column(
-        modifier
-            .padding(horizontal = 10.dp, vertical = 10.dp),
+        modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
-        var otpValue by remember {
+        var value by rememberSaveable {
             mutableStateOf("")
         }
+        var isNumberValid: Boolean by rememberSaveable { mutableStateOf(false) }
+
         Toolbar(
             modifier = Modifier
                 .align(Alignment.Start),
@@ -55,7 +51,7 @@ fun GenericPasswordScreen(
 
         Text(
             text = description,
-            modifier = Modifier.padding(vertical = 24.dp),
+            modifier = Modifier.padding(horizontal = 20.dp, vertical = 28.dp),
             style = MaterialTheme.typography.labelLarge,
             lineHeight = 24.sp,
         )
@@ -63,22 +59,36 @@ fun GenericPasswordScreen(
         when (userInputType) {
 
             ScreenInputType.OTP -> OtpComponent(
-                modifier = Modifier,
-                otpText = otpValue,
-                onOtpTextChange = { value ->
-                    otpValue = value
-                })
+                otpText = value,
+                onOtpTextChange = { otp ->
+                    value = otp
+                },
+                otpCount = otpCount
+
+            )
+
+            ScreenInputType.PHONE -> TogiCountryCodePicker(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 10.dp),
+                onValueChange = { (_, phone), isValid ->
+                    value = phone
+                    isNumberValid = isValid
+                },
+                label = { Text("Phone Number") },
+                fallbackCountry = CountryData.Tunisia
+            )
 
             ScreenInputType.TEXTFILED -> CwcTextFiled()
-            else -> {}
 
         }
 
-        Button(
+        CwcButton(
+            onCLick = onSendActionSuccess,
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(vertical = 20.dp, horizontal = 40.dp),
-            onClick = onSendActionSuccess
+            enabled = (isNumberValid && userInputType == ScreenInputType.PHONE) || (value.length == otpCount && userInputType == ScreenInputType.OTP)
         ) {
             Text(text = stringResource(id = R.string.send))
         }
@@ -88,21 +98,23 @@ fun GenericPasswordScreen(
 }
 
 
-
-
-
-@Preview
+@Preview(
+    showSystemUi = true
+)
 @Composable
 fun ToolbarPreview() {
-   GenericPasswordScreen(
-       modifier = Modifier
-           .fillMaxSize()
-           .background(MaterialTheme.colorScheme.background),
-       title = "Confirm OTP",
-       description = "Please confirm your 4 digit OTP. which is sent on this number +1202-555-0174 Change number.",
-       userInputType = ScreenInputType.OTP,
-       {}
-   ) {}
+    GenericPasswordScreen(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background),
+        otpCount = 6,
+        title = "Confirm OTP",
+        description = "Please confirm your 4 digit OTP. which is sent on this number +1202-555-0174 Change number.",
+        userInputType = ScreenInputType.OTP,
+        navigationAction = {}
+    ) {
+
+    }
 }
 
 
