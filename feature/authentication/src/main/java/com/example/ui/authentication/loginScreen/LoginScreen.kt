@@ -1,7 +1,6 @@
 package com.example.ui.authentication.loginScreen
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -28,14 +27,14 @@ import com.example.compose.ThemePreviews
 
 
 @Composable
-fun LoginScreen(
+fun LoginRoute(
     loginViewModel: LoginViewModel
 ) {
     LoginScreen({}, loginViewModel::navigateForgetPassword)
 }
 
 @Composable
-private fun LoginScreen(
+internal fun LoginScreen(
     onUserLogin: () -> Unit,
     onForgetPassword: () -> Unit
 ) {

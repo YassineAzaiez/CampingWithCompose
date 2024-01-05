@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="forget_password">Forget Password</string>
+    <string name="set_password">Set Password</string>
     <string name="forget_password_description">To get your new password you need to put your phone number down below. and we will send you an OTP on that number for confirmation.</string>
+    <string name="new_password_description">Enter your new password below and please don’t forget it now. it’s important to you to remember your password.</string>
 
 </resources>

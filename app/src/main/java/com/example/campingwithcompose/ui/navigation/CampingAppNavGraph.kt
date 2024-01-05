@@ -9,8 +9,7 @@ import com.example.campingwithcompose.ui.screens.favoritScreen.fitnessScreenRout
 import com.example.campingwithcompose.ui.screens.homeScreen.homeScreenRoute
 import com.example.campingwithcompose.ui.screens.onBoarding.onBoardingGraph
 import com.example.campingwithcompose.ui.screens.teamMatesScreen.teamMatesScreenRoute
-import com.example.ui.authentication.forgetPassword.forgetPasswordRoute
-import com.example.ui.authentication.loginScreen.loginGraph
+import com.example.ui.authentication.loginGraph
 
 
 @Composable
@@ -22,7 +21,6 @@ fun CampingAppNavGraph(navController: NavHostController) {
 
         onBoardingGraph()
         loginGraph()
-        forgetPasswordRoute()
         homeScreenRoute()
         teamMatesScreenRoute()
         fitnessScreenRoute()

@@ -151,6 +151,6 @@ fun CampingWithComposeTheme(
     )
 }
 
-@Preview(uiMode = Configuration.UI_MODE_NIGHT_NO, name = "Light theme")
-@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, name = "Dark theme")
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_NO, name = "Light theme", showSystemUi = true)
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, name = "Dark theme",showSystemUi = true)
 annotation class ThemePreviews

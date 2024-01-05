@@ -55,14 +55,7 @@ class MainActivity : ComponentActivity() {
                             navigationManager.commands.collect { command ->
                                 if (command.route.isNotEmpty()) {
                                     navController.navigate(command.route) {
-                                        if (command == Authentication.Login) {
-                                            popUpTo(
-                                                navController.graph.startDestinationRoute ?: ""
-                                            ) {
-                                                inclusive = true
-                                            }
 
-                                        }
                                         if (command == Launch.OnBoarding) {
                                             popUpTo(navController.graph.findStartDestination().id) {
                                                 inclusive = true
