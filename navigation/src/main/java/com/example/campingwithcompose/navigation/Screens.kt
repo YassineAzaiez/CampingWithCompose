@@ -16,5 +16,6 @@ sealed class Launch(override val route: String): Screens(route){
 sealed class Authentication(override val route: String): Screens(route){
    object Login : Authentication("login")
    object ForgetPassword : Authentication("forgetPassword")
+   object Registration : Authentication("Registration")
 
 }

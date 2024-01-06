@@ -30,13 +30,18 @@ import com.example.compose.ThemePreviews
 fun LoginRoute(
     loginViewModel: LoginViewModel
 ) {
-    LoginScreen({}, loginViewModel::navigateForgetPassword)
+    LoginScreen(
+        onUserLogin = {},
+        onForgetPassword = loginViewModel::navigateForgetPassword,
+        onRegistration = loginViewModel::navigateRegistration
+    )
 }
 
 @Composable
 internal fun LoginScreen(
     onUserLogin: () -> Unit,
-    onForgetPassword: () -> Unit
+    onForgetPassword: () -> Unit,
+    onRegistration: () -> Unit
 ) {
     Column(modifier = Modifier.padding(top = 100.dp, start = 40.dp, end = 40.dp)) {
         Image(
@@ -66,7 +71,7 @@ internal fun LoginScreen(
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .noRippleClickable {  onForgetPassword.invoke()}
+                .noRippleClickable { onForgetPassword.invoke() }
                 .padding(top = 16.dp),
             contentAlignment = Alignment.Center,
 
@@ -87,7 +92,7 @@ internal fun LoginScreen(
             modifier = Modifier
                 .fillMaxWidth(),
             contentPadding = PaddingValues(vertical = 12.dp),
-            onClick = {}
+            onClick = onRegistration
 
 
         ) {
@@ -106,7 +111,7 @@ fun LoginScreenPreview() {
         Surface(
             tonalElevation = 5.dp
         ) {
-            LoginScreen({}, {})
+            LoginScreen({}, {}, {})
         }
     }
 }

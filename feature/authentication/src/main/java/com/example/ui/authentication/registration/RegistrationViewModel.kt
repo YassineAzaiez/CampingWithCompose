@@ -1,4 +1,4 @@
-package com.example.ui.authentication.loginScreen
+package com.example.ui.authentication.registration
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -8,20 +8,15 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class LoginViewModel  @Inject constructor(
+class RegistrationViewModel @Inject constructor(
     private val navigationManager: NavigationManager
 
 ) : ViewModel() {
 
-    fun navigateForgetPassword() {
+    fun onRegisterClicked() {
         viewModelScope.launch {
+            //TODO the screen route to be changed
             navigationManager.navigate(Authentication.ForgetPassword)
-        }
-    }
-
-    fun navigateRegistration() {
-        viewModelScope.launch {
-            navigationManager.navigate(Authentication.Registration)
         }
     }
 

@@ -50,7 +50,6 @@ fun CwcTextFiled(
             value = inputText,
             maxLines = maxLines,
             keyboardOptions = inputType,
-            label = {},
             colors = TextFieldDefaults.colors(
 
                 focusedIndicatorColor = MaterialTheme.colorScheme.outlineVariant, // Set the focused line color to transparent

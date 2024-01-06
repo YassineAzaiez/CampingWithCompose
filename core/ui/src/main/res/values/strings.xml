@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="send">Send</string>
-    <string name="login">Login</string>
+    <string name="login">Log In</string>
     <string name="register">Register</string>
     <string name="successful_registration">Your registration is successful. please go back and log-in.</string>
 </resources>

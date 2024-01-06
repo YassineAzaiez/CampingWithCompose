@@ -12,7 +12,7 @@ android {
 }
 
 dependencies {
-
+ //TODO fix dependencies
     implementation(libs.androidx.junit.ktx)
     androidTestImplementation("junit:junit:4.12")
     with(getLibs()) {
@@ -22,7 +22,7 @@ dependencies {
         api(getLib("compose.foundation"))
         api(getLib("compose.graphics"))
         api(getLib("material3"))
-        api( getLib("androidx.hilt.navigation.compose"))
+        api(getLib("androidx.hilt.navigation.compose"))
         api(getLib("navigation"))
         api(getLib("navigation.annimation"))
 
@@ -31,8 +31,8 @@ dependencies {
         api(getLib("androidx.lifecycle.runtime.compose"))
         api(getLib("ui.tooling.preview"))
         api(libs.ui.tooling)
-        implementation("androidx.compose.material:material:1.5.4")
-        implementation(libs.phone.code.picker)
+        api("androidx.compose.material:material:1.5.4")
+        api(libs.phone.code.picker)
     }
 
 }

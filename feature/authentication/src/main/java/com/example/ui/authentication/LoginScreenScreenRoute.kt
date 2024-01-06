@@ -16,6 +16,7 @@ import com.example.ui.authentication.forgetPassword.ForgetPasswordScreen
 import com.example.ui.authentication.forgetPassword.NewPasswordScreen
 import com.example.ui.authentication.forgetPassword.OtpScreen
 import com.example.ui.authentication.loginScreen.LoginRoute
+import com.example.ui.authentication.registration.RegistrationRoute
 
 
 fun NavGraphBuilder.loginGraph() {
@@ -27,6 +28,7 @@ fun NavGraphBuilder.loginGraph() {
         addForgetPasswordRoute()
         addNewPasswordRoute()
         addOtpScreenRoute()
+        addRegistrationScreenRoute()
     }
 
 }
@@ -133,4 +135,29 @@ fun NavGraphBuilder.addOtpScreenRoute() {
             ) + fadeIn(animationSpec = tween(200))
         }
     ) { OtpScreen() }
+}
+
+fun NavGraphBuilder.addRegistrationScreenRoute() {
+
+    composable(
+        Authentication.Registration.route,
+        exitTransition = {
+            slideOutHorizontally(
+                targetOffsetX = { -300 },
+                animationSpec = tween(
+                    300,
+                    easing = FastOutSlowInEasing
+                )
+            ) + fadeOut(animationSpec = tween(200))
+        },
+        popEnterTransition = {
+            slideInHorizontally(
+                initialOffsetX = { -300 },
+                animationSpec = tween(
+                    300,
+                    easing = FastOutSlowInEasing
+                )
+            ) + fadeIn(animationSpec = tween(200))
+        }
+    ) { RegistrationRoute(hiltViewModel()) }
 }
