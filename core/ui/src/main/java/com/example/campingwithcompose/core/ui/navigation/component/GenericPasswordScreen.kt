@@ -19,6 +19,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.campingwithcompose.core.ui.R
+import com.mmj.validation.presentation.component.CwcTextField
 import com.togitech.ccp.component.TogiCountryCodePicker
 import com.togitech.ccp.data.CountryData
 
@@ -79,7 +80,7 @@ fun GenericPasswordScreen(
                 fallbackCountry = CountryData.Tunisia
             )
 
-            ScreenInputType.TEXTFILED -> CwcTextFiled()
+            ScreenInputType.TEXTFILED -> CwcTextField()
 
         }
 

@@ -18,7 +18,7 @@ import com.example.campingwithcompose.ui.screens.onBoarding.splashScreen.SplashS
 fun NavGraphBuilder.onBoardingGraph() {
     navigation(
         route = Screens.Splash.route,
-        startDestination = Launch.OnBoarding.route
+        startDestination = Launch.Splash.route
     ) {
         addSplash()
         addOnBoarding()

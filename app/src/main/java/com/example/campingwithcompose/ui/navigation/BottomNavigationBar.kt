@@ -16,23 +16,24 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
-import androidx.navigation.NavDestination
-import androidx.navigation.compose.currentBackStackEntryAsState
+import com.example.campingwithcompose.R
 import com.example.campingwithcompose.core.ui.navigation.theme.Dimensions.BottomBar.BottomNavHeight
 import com.example.campingwithcompose.core.ui.navigation.utils.noRippleClickable
 
 
 @Composable
 fun BottomNavigationBar(
-    menuItems: List<NavigationItem>,
-    navController: NavController,
+    menuItems: Array<HomeSections>,
+    currentRoute: String,
     modifier: Modifier = Modifier,
-    onMenuItemClicked: (String) -> Unit
+    navigateToRoute: (String) -> Unit,
 ) {
-    val backStackEntry = navController.currentBackStackEntryAsState()
+
     Row(
         modifier = modifier
             .height(BottomNavHeight)
@@ -44,8 +45,7 @@ fun BottomNavigationBar(
 
         menuItems.forEach { item ->
             AddItem(
-                item, backStackEntry.value?.destination,
-                onMenuItemClicked = onMenuItemClicked
+                item, currentRoute, onMenuItemClicked = navigateToRoute
             )
 
         }
@@ -56,11 +56,9 @@ fun BottomNavigationBar(
 
 @Composable
 fun AddItem(
-    item: NavigationItem,
-    currentDestination: NavDestination?,
-    onMenuItemClicked: (String) -> Unit
+    item: HomeSections, currentDestination: String, onMenuItemClicked: (String) -> Unit
 ) {
-    val selected = item.itemRoute == currentDestination?.route
+    val selected = item.route == currentDestination
 
     val color = if (selected) MaterialTheme.colorScheme.background else Color.Transparent
 
@@ -70,8 +68,8 @@ fun AddItem(
         modifier = Modifier
             .height(40.dp)
             .background(color, shape = CircleShape)
-            .noRippleClickable{
-                onMenuItemClicked(item.itemRoute)
+            .noRippleClickable {
+                onMenuItemClicked(item.route)
             }
 
     ) {
@@ -85,9 +83,10 @@ fun AddItem(
 
             Icon(
                 painter = rememberVectorPainter(
-                    item.itemIcon
+                    ImageVector.vectorResource(id = R.drawable.ic_actitivites)
 
-                ), contentDescription = item.itemName,
+                ),
+                contentDescription = stringResource(id = item.title),
                 tint = MaterialTheme.colorScheme.onPrimary
             )
 
@@ -97,7 +96,7 @@ fun AddItem(
 
             AnimatedVisibility(visible = selected) {
                 Text(
-                    text = item.itemName,
+                    text = stringResource(id = item.title),
                     color = MaterialTheme.colorScheme.onPrimary
                 )
             }

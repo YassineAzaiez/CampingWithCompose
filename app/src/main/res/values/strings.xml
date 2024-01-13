@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">CampingWithCompose</string>
     <string name="login">Login</string>
+    <string name="activities">Activities</string>
+    <string name="fitness">Fitness</string>
+    <string name="backPack">BackPack</string>
+    <string name="teamMates">TeamMates</string>
 </resources>

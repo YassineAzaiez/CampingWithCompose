@@ -1,12 +1,12 @@
 package com.example.ui.authentication.loginScreen
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -20,10 +20,10 @@ import androidx.compose.ui.unit.dp
 import com.example.campingwithcompose.core.ui.R
 import com.example.campingwithcompose.core.ui.navigation.component.CwcButton
 import com.example.campingwithcompose.core.ui.navigation.component.CwcOutlinedButton
-import com.example.campingwithcompose.core.ui.navigation.component.CwcTextFiled
 import com.example.campingwithcompose.core.ui.navigation.utils.noRippleClickable
 import com.example.compose.CampingWithComposeTheme
 import com.example.compose.ThemePreviews
+import com.mmj.validation.presentation.component.CwcTextField
 
 
 @Composable
@@ -43,7 +43,11 @@ internal fun LoginScreen(
     onForgetPassword: () -> Unit,
     onRegistration: () -> Unit
 ) {
-    Column(modifier = Modifier.padding(top = 100.dp, start = 40.dp, end = 40.dp)) {
+    Column(modifier = Modifier
+        .padding(top = 100.dp, start = 40.dp, end = 40.dp),
+        verticalArrangement = Arrangement.Center
+
+    ) {
         Image(
             painter = painterResource(id = R.drawable.ic_login),
             contentDescription = "",
@@ -51,22 +55,19 @@ internal fun LoginScreen(
                 .fillMaxWidth(),
         )
 
-        CwcTextFiled(
+        CwcTextField(
             label = "Email",
             modifier = Modifier.padding(top = 60.dp),
-            inputType = KeyboardOptions(
-                imeAction = ImeAction.Next,
-                keyboardType = KeyboardType.Email
-            )
+            imeAction = ImeAction.Next,
+            keyboardType = KeyboardType.Email
+
         )
-        CwcTextFiled(
+        CwcTextField(
             label = "Password",
-            modifier = Modifier.padding(top = 20.dp),
-            inputType = KeyboardOptions(
-                imeAction = ImeAction.Done,
-                keyboardType = KeyboardType.Password
-            )
+            imeAction = ImeAction.Done,
+            keyboardType = KeyboardType.Password
         )
+
 
         Box(
             modifier = Modifier

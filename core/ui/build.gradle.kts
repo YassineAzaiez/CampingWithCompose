@@ -14,6 +14,7 @@ android {
 dependencies {
  //TODO fix dependencies
     implementation(libs.androidx.junit.ktx)
+    implementation(project(":core:common"))
     androidTestImplementation("junit:junit:4.12")
     with(getLibs()) {
         api(platform(getLib("compose.bom")))
