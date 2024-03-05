@@ -26,10 +26,10 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.campingwithcompose.core.ui.R
 import com.example.campingwithcompose.core.ui.navigation.component.CwcButton
 import com.example.campingwithcompose.core.ui.navigation.component.CwcOutlinedButton
+import com.example.campingwithcompose.core.ui.navigation.component.CwcTextField
 import com.example.compose.CampingWithComposeTheme
 import com.example.compose.ThemePreviews
 import com.example.ui.authentication.registration.uisate.RegistrationState
-import com.mmj.validation.presentation.component.CwcTextField
 import com.togitech.ccp.component.TogiCountryCodePicker
 import com.togitech.ccp.data.CountryData
 

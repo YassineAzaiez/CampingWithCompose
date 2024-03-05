@@ -48,6 +48,7 @@ dependencies {
 
     implementation(project(":feature:authentication"))
     implementation(project(":core:ui"))
+    implementation(project(":core:common"))
 
 
     //coroutines

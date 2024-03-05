@@ -14,8 +14,11 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
@@ -42,14 +45,18 @@ private fun OtpTextField(
     otpCount: Int = 6,
     onOtpTextChange: (String) -> Unit
 ) {
+    val focusRequester = remember { FocusRequester() }
     LaunchedEffect(Unit) {
+
+        focusRequester.requestFocus()
+
         if (otpText.length > otpCount) {
             throw IllegalArgumentException("Otp text value must not have more than otpCount: $otpCount characters")
         }
     }
 
     BasicTextField(
-        modifier = modifier,
+        modifier = modifier.focusRequester(focusRequester),
         value = TextFieldValue(otpText, selection = TextRange(otpText.length)),
         onValueChange = {
             if (it.text.length <= otpCount) {

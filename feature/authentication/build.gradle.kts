@@ -13,6 +13,7 @@ android {
 dependencies{
     implementation(project(":navigation"))
     implementation(project(":core:ui"))
+    implementation(project(":core:common"))
 
 
 

@@ -49,7 +49,7 @@ class MainActivity : ComponentActivity() {
                         repeatOnLifecycle(Lifecycle.State.STARTED) {
                             navigationManager.commands.collect { command ->
                                 if (command.route.isNotEmpty()) {
-                                    appState.navController.navigate(command.route) {
+                                    appState.navController.navigate(command.route,) {
                                         if (command == Authentication.Login) {
                                             popUpTo(
                                                 appState.navController.graph.startDestinationRoute ?: ""
@@ -72,7 +72,7 @@ class MainActivity : ComponentActivity() {
                 Surface (
                     tonalElevation = 5.dp
                 ){
-                    CampingApp(appState)
+                    CampingApp(modifier = Modifier,appState)
                 }
             }
         }
@@ -81,10 +81,11 @@ class MainActivity : ComponentActivity() {
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun CampingApp(appState: CwcAppState) {
+fun CampingApp(modifier: Modifier , appState: CwcAppState) {
 
-    Scaffold(bottomBar = {
-
+    Scaffold(
+        modifier = modifier,
+        bottomBar = {
         if (appState.shouldShowBottomBar) BottomNavigationBar(
             menuItems = appState.bottomBarTabs,
             modifier = Modifier.height(Dimensions.BottomBar.BottomNavHeight),

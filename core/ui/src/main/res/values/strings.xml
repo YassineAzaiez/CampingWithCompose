@@ -4,4 +4,6 @@
     <string name="login">Log In</string>
     <string name="register">Register</string>
     <string name="successful_registration">Your registration is successful. please go back and log-in.</string>
+    <string name="otp_screen_text"> Please enter your 5 digit OTP sent to your number</string>
+    <string name="otp_screen_title"> Confirm OTP</string>
 </resources>

@@ -19,9 +19,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.campingwithcompose.core.ui.R
-import com.mmj.validation.presentation.component.CwcTextField
 import com.togitech.ccp.component.TogiCountryCodePicker
 import com.togitech.ccp.data.CountryData
+import com.togitech.ccp.data.Iso31661alpha2
+import com.togitech.ccp.data.PhoneCode
 
 @Composable
 fun GenericPasswordScreen(
@@ -77,7 +78,7 @@ fun GenericPasswordScreen(
                     isNumberValid = isValid
                 },
                 label = { Text("Phone Number") },
-                fallbackCountry = CountryData.Tunisia
+                initialCountryPhoneCode = "+216"
             )
 
             ScreenInputType.TEXTFILED -> CwcTextField()

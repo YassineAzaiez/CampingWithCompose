@@ -1,9 +1,10 @@
-package com.mmj.validation.presentation.component
+package com.example.campingwithcompose.core.ui.navigation.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsFocusedAsState
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -44,6 +45,7 @@ fun CwcTextField(
     maxLines: Int = 1,
     text: String = "",
     onValueChange: (String) -> Unit = {},
+    onDone: (String) -> Unit = {},
     keyboardType: KeyboardType = KeyboardType.Text,
     imeAction: ImeAction = ImeAction.Done,
     errorMessage: UiText? = null,
@@ -57,16 +59,16 @@ fun CwcTextField(
     val keyboardController = LocalSoftwareKeyboardController.current
     val interactionSource = remember { MutableInteractionSource() }
     val isFocused by interactionSource.collectIsFocusedAsState()
-    val focusRequester = remember {
-        FocusRequester()
-    }
     var inputText by remember {
         mutableStateOf(text);
     }
-    val colorBorder = if (isError) MaterialTheme.colorScheme.error else if (isFocused)
+    val colorBorder = if (isError && !errorMessage?.asString().isNullOrEmpty()) MaterialTheme.colorScheme.error else if (isFocused)
         MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.primary.copy(alpha = 0.3f)
 
-    Column {
+    Column(
+        modifier = modifier,
+        verticalArrangement = Arrangement.Top
+    ) {
         BasicTextField(
             value = inputText,
             onValueChange = {
@@ -90,12 +92,13 @@ fun CwcTextField(
             keyboardActions = KeyboardActions(
                 onDone = {
                     keyboardController?.hide()
+                    onDone(inputText)
                 }
             ),
             cursorBrush = SolidColor(MaterialTheme.colorScheme.primary),
             decorationBox = { innerTextField ->
                 Row(
-                    modifier = modifier
+                    modifier = Modifier
                         .clip(RoundedCornerShape(12.dp))
                         .background(
                             color = MaterialTheme.colorScheme.surface,
@@ -104,8 +107,7 @@ fun CwcTextField(
                             width = 1.dp,
                             color = colorBorder,
                             shape = RoundedCornerShape(12.dp)
-                        )
-                        .focusRequester(focusRequester),
+                        ),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     if (leadingIcon != null) {
@@ -137,11 +139,12 @@ fun CwcTextField(
                 }
             },
         )
-        Text(
-            text = if (isError) errorMessage!!.asString(context) else "",
-            color = MaterialTheme.colorScheme.error,
-            style = MaterialTheme.typography.bodySmall,
-            modifier = modifier
-        )
+        if (isError && !errorMessage?.asString().isNullOrEmpty())
+            Text(
+                text =  errorMessage!!.asString(context) ,
+                color = MaterialTheme.colorScheme.error,
+                style = MaterialTheme.typography.bodySmall,
+                modifier = Modifier.padding(start = 10.dp , top = 5.dp)
+            )
     }
 }

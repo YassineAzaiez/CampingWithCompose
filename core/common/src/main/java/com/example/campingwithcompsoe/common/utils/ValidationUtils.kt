@@ -10,6 +10,11 @@ object ValidationUtils {
         return emailRegex.matches(email)
     }
 
+    fun isValidFullName(fullName: String): Boolean {
+        val nameRegex = Regex("""^[A-Z][a-zA-Z]*( [A-Z][a-zA-Z]*)*$""")
+
+        return fullName.matches(nameRegex) && fullName.length >= 2
+    }
 
     fun isPasswordValid(password: String): Boolean {
         val hasDigit = password.any(Char::isDigit)

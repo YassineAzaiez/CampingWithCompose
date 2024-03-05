@@ -13,6 +13,7 @@ android {
 dependencies {
 
     implementation(libs.navigation)
+    implementation(project(":core:common"))
 
 
 }

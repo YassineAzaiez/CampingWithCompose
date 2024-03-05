@@ -12,9 +12,9 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
+import com.example.campingwithcompose.core.ui.navigation.common.OtpScreen
 import com.example.ui.authentication.forgetPassword.ForgetPasswordScreen
 import com.example.ui.authentication.forgetPassword.NewPasswordScreen
-import com.example.ui.authentication.forgetPassword.OtpScreen
 import com.example.ui.authentication.loginScreen.LoginRoute
 import com.example.ui.authentication.registration.RegistrationRoute
 
@@ -27,7 +27,6 @@ fun NavGraphBuilder.loginGraph() {
         addLogin()
         addForgetPasswordRoute()
         addNewPasswordRoute()
-        addOtpScreenRoute()
         addRegistrationScreenRoute()
     }
 
@@ -112,30 +111,6 @@ fun NavGraphBuilder.addNewPasswordRoute() {
     ) { NewPasswordScreen() }
 }
 
-fun NavGraphBuilder.addOtpScreenRoute() {
-
-    composable(
-        Authentication.ForgetPassword.route,
-        exitTransition = {
-            slideOutHorizontally(
-                targetOffsetX = { -300 },
-                animationSpec = tween(
-                    300,
-                    easing = FastOutSlowInEasing
-                )
-            ) + fadeOut(animationSpec = tween(200))
-        },
-        popEnterTransition = {
-            slideInHorizontally(
-                initialOffsetX = { -300 },
-                animationSpec = tween(
-                    300,
-                    easing = FastOutSlowInEasing
-                )
-            ) + fadeIn(animationSpec = tween(200))
-        }
-    ) { OtpScreen() }
-}
 
 fun NavGraphBuilder.addRegistrationScreenRoute() {
 
