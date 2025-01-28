@@ -19,10 +19,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.campingwithcompose.core.ui.R
-import com.togitech.ccp.component.TogiCountryCodePicker
-import com.togitech.ccp.data.CountryData
-import com.togitech.ccp.data.Iso31661alpha2
-import com.togitech.ccp.data.PhoneCode
+import com.example.campingwithcompose.core.ui.navigation.component.phonenumbercomponet.component.TogiCountryCodePicker
 
 @Composable
 fun GenericPasswordScreen(

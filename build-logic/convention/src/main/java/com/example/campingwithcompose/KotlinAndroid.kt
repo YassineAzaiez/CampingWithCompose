@@ -3,12 +3,10 @@ package com.example.campingwithcompose
 import com.android.build.api.dsl.CommonExtension
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
-import org.gradle.api.plugins.ExtensionAware
-import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
 import org.jetbrains.kotlin.gradle.dsl.kotlinExtension
 
 internal fun Project.configureKotlinAndroid(
-    commonExtension: CommonExtension<*, *, *, *,*>,
+    commonExtension: CommonExtension<*, *, *, *, *, *>,
 ) = with(commonExtension) {
 
     compileSdk = 33
@@ -28,14 +26,8 @@ internal fun Project.configureKotlinAndroid(
     }
 
 
-    kotlinOptions {
-        freeCompilerArgs = freeCompilerArgs
-        jvmTarget = JavaVersion.VERSION_17.toString()
-    }
 
     kotlinExtension.jvmToolchain(17)
 }
 
-private fun CommonExtension<*, *, *, *,*>.kotlinOptions(block: KotlinJvmOptions.() -> Unit) {
-    (this as ExtensionAware).extensions.configure("kotlinOptions", block)
-}
+

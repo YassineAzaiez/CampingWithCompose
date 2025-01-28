@@ -15,10 +15,7 @@ class AndroidLibraryFeatureConventionPlugin : Plugin<Project> {
             apply("org.jetbrains.kotlin.kapt")
         }
 
-        dependencies {
-           implementation(project(":core:ui"))
 
-        }
 
     }
 }

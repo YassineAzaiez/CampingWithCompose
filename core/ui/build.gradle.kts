@@ -12,7 +12,6 @@ android {
 }
 
 dependencies {
- //TODO fix dependencies
     implementation(libs.androidx.junit.ktx)
     implementation(project(":core:common"))
     androidTestImplementation("junit:junit:4.12")
@@ -33,7 +32,8 @@ dependencies {
         api(getLib("ui.tooling.preview"))
         api(libs.ui.tooling)
         api("androidx.compose.material:material:1.5.4")
-        api(libs.phone.code.picker)
+        api(libs.kotlinx.immutable)
+        api(libs.libphonenumber)
     }
 
 }

@@ -14,6 +14,8 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowForward
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material3.Icon
@@ -101,7 +103,7 @@ fun ArrowIcon(
 
     ) {
         Icon(
-            painter = rememberVectorPainter(if (!isGoNext) Icons.Default.ArrowBack else Icons.Default.ArrowForward),
+            painter = rememberVectorPainter(if (!isGoNext) Icons.AutoMirrored.Filled.ArrowBack else Icons.AutoMirrored.Filled.ArrowForward),
             contentDescription = "Arrow Back",
             tint = if (isGoNext) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.onBackground,
 

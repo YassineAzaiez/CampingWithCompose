@@ -3,6 +3,7 @@ package com.example.campingwithcompose.core.ui.navigation.component
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.filled.KeyboardArrowLeft
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -27,7 +28,7 @@ fun Toolbar(
             onClick = navigationAction,
         ) {
             Icon(
-                imageVector = Icons.Default.KeyboardArrowLeft, contentDescription = "Arrow left"
+                imageVector = Icons.AutoMirrored.Filled.KeyboardArrowLeft, contentDescription = "Arrow left"
             )
         }
 

@@ -25,7 +25,7 @@ import com.example.campingwithcompose.ui.navigation.findStartDestination
 import com.example.campingwithcompose.ui.screens.CwcAppState
 import com.example.campingwithcompose.ui.screens.homeScreen.Greeting
 import com.example.campingwithcompose.ui.screens.rememberNiaAppState
-import com.example.compose.CampingWithComposeTheme
+import com.example.campingwithcompose.core.ui.navigation.theme.CampingWithComposeTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject

@@ -3,13 +3,9 @@
 package com.example.campingwithcompose
 
 import com.android.build.api.dsl.CommonExtension
-import com.android.build.api.dsl.Packaging
-import ext.getLibs
-import ext.getVersion
-import org.gradle.api.Project
 
-internal fun Project.configureAndroidCompose(
-    commonExtension: CommonExtension<*, *, *, *,*>,
+internal fun configureAndroidCompose(
+    commonExtension: CommonExtension<*, *, *, *, *, *>,
 ) = with(commonExtension) {
 
     defaultConfig.minSdk = 26
@@ -28,7 +24,5 @@ internal fun Project.configureAndroidCompose(
                 )
         )
     }
-    composeOptions {
-        kotlinCompilerExtensionVersion = getLibs().getVersion("androidxComposeCompiler").toString()
-    }
+
 }

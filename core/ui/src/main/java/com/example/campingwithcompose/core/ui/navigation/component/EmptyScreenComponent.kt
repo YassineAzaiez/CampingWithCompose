@@ -4,7 +4,6 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -21,8 +20,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.campingwithcompose.core.ui.R
-import com.example.compose.CampingWithComposeTheme
-import com.example.compose.ThemePreviews
+import com.example.campingwithcompose.core.ui.navigation.theme.CampingWithComposeTheme
+import com.example.campingwithcompose.core.ui.navigation.theme.ThemePreviews
 
 
 @Composable

@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -27,11 +26,12 @@ import com.example.campingwithcompose.core.ui.R
 import com.example.campingwithcompose.core.ui.navigation.component.CwcButton
 import com.example.campingwithcompose.core.ui.navigation.component.CwcOutlinedButton
 import com.example.campingwithcompose.core.ui.navigation.component.CwcTextField
-import com.example.compose.CampingWithComposeTheme
-import com.example.compose.ThemePreviews
+import com.example.campingwithcompose.core.ui.navigation.component.phonenumbercomponet.component.TogiCountryCodePicker
+import com.example.campingwithcompose.core.ui.navigation.component.phonenumbercomponet.data.CountryData
+import com.example.campingwithcompose.core.ui.navigation.theme.CampingWithComposeTheme
+import com.example.campingwithcompose.core.ui.navigation.theme.ThemePreviews
 import com.example.ui.authentication.registration.uisate.RegistrationState
-import com.togitech.ccp.component.TogiCountryCodePicker
-import com.togitech.ccp.data.CountryData
+
 
 @Composable
 fun RegistrationRoute(

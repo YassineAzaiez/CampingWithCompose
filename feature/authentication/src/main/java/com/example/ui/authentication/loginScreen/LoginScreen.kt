@@ -21,9 +21,10 @@ import com.example.campingwithcompose.core.ui.R
 import com.example.campingwithcompose.core.ui.navigation.component.CwcButton
 import com.example.campingwithcompose.core.ui.navigation.component.CwcOutlinedButton
 import com.example.campingwithcompose.core.ui.navigation.component.CwcTextField
+import com.example.campingwithcompose.core.ui.navigation.theme.CampingWithComposeTheme
+import com.example.campingwithcompose.core.ui.navigation.theme.ThemePreviews
 import com.example.campingwithcompose.core.ui.navigation.utils.noRippleClickable
-import com.example.compose.CampingWithComposeTheme
-import com.example.compose.ThemePreviews
+
 
 
 @Composable

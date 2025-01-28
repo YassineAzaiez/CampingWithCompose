@@ -12,8 +12,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.compose.CampingWithComposeTheme
-import com.example.compose.ThemePreviews
+import com.example.campingwithcompose.core.ui.navigation.theme.CampingWithComposeTheme
+import com.example.campingwithcompose.core.ui.navigation.theme.ThemePreviews
 
 @Composable
 fun CwcButton(
@@ -46,7 +46,7 @@ fun CwcOutlinedButton(
 ) {
     OutlinedButton(
         onClick = onClick,
-        modifier = modifier,
+        modifier = modifier.apply {  },
         enabled = enabled,
         colors = ButtonDefaults.outlinedButtonColors(
             contentColor = MaterialTheme.colorScheme.inversePrimary,

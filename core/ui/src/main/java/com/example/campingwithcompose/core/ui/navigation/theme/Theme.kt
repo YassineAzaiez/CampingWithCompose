@@ -1,4 +1,4 @@
-package com.example.compose
+package com.example.campingwithcompose.core.ui.navigation.theme
 
 import android.app.Activity
 import android.content.res.Configuration
@@ -16,42 +16,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.view.WindowCompat
-import com.example.campingwithcompose.core.ui.navigation.theme.Typography
-import com.example.campingwithcompose.core.ui.navigation.theme.black
-import com.example.campingwithcompose.core.ui.navigation.theme.blue00201E
-import com.example.campingwithcompose.core.ui.navigation.theme.blue003734
-import com.example.campingwithcompose.core.ui.navigation.theme.blue1F4E4B
-import com.example.campingwithcompose.core.ui.navigation.theme.blueA0D0CB
-import com.example.campingwithcompose.core.ui.navigation.theme.blueBCECE7
-import com.example.campingwithcompose.core.ui.navigation.theme.green102000
-import com.example.campingwithcompose.core.ui.navigation.theme.green161E0B
-import com.example.campingwithcompose.core.ui.navigation.theme.green1B1C18
-import com.example.campingwithcompose.core.ui.navigation.theme.green1F3700
-import com.example.campingwithcompose.core.ui.navigation.theme.green2A331E
-import com.example.campingwithcompose.core.ui.navigation.theme.green30312C
-import com.example.campingwithcompose.core.ui.navigation.theme.green304F00
-import com.example.campingwithcompose.core.ui.navigation.theme.green386663
-import com.example.campingwithcompose.core.ui.navigation.theme.green404A33
-import com.example.campingwithcompose.core.ui.navigation.theme.green416900
-import com.example.campingwithcompose.core.ui.navigation.theme.green44483D
-import com.example.campingwithcompose.core.ui.navigation.theme.green586249
-import com.example.campingwithcompose.core.ui.navigation.theme.green8F9285
-import com.example.campingwithcompose.core.ui.navigation.theme.green91DB2A
-import com.example.campingwithcompose.core.ui.navigation.theme.greenACF847
-import com.example.campingwithcompose.core.ui.navigation.theme.greenC0CBAC
-import com.example.campingwithcompose.core.ui.navigation.theme.greenC5C8BA
-import com.example.campingwithcompose.core.ui.navigation.theme.greenDCE7C7
-import com.example.campingwithcompose.core.ui.navigation.theme.greenE1E4D5
-import com.example.campingwithcompose.core.ui.navigation.theme.red410002
-import com.example.campingwithcompose.core.ui.navigation.theme.red690005
-import com.example.campingwithcompose.core.ui.navigation.theme.red93000A
-import com.example.campingwithcompose.core.ui.navigation.theme.redBA1A1A
-import com.example.campingwithcompose.core.ui.navigation.theme.redFFB4AB
-import com.example.campingwithcompose.core.ui.navigation.theme.redFFDAD6
-import com.example.campingwithcompose.core.ui.navigation.theme.white
-import com.example.campingwithcompose.core.ui.navigation.theme.yellowE3E3DB
-import com.example.campingwithcompose.core.ui.navigation.theme.yellowF2F1E9
-import com.example.campingwithcompose.core.ui.navigation.theme.yellowFDFCF5
 
 
 private val LightColorScheme = lightColorScheme(

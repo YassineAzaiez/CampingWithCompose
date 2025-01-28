@@ -18,9 +18,8 @@ dependencyResolutionManagement {
 }
 rootProject.name = "CampingWithCompose"
 include(":app")
-
-
 include(":feature:authentication")
 include ':core:ui'
 include ':navigation'
 include ':core:common'
+
